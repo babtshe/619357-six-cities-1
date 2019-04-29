@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов» [![Build status][travis-image]][travis-url]
 
 * Студент: [Александр Бабченко](https://up.htmlacademy.ru/react/1/user/619357).
-* Наставник: `Неизвестно`.
+* Наставник: [Иван Захарченко](https://htmlacademy.ru/profile/id1033227).
 
 ---
 
