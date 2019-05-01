@@ -10,6 +10,7 @@ module.exports = {
     contentBase: path.join(__dirname, `public`), // eslint-disable-line
     compress: false,
     port: 1337,
+    open: true,
   },
   module: {
     rules: [
@@ -22,5 +23,8 @@ module.exports = {
       }
     ],
   },
-  devtool: `source-map`
+  devtool: `source-map`,
+  resolve: {
+    extensions: [`.js`, `.jsx`]
+  }
 };
