@@ -138,7 +138,7 @@ const MainView = (props) => {
                           <span className="visually-hidden">Rating</span>
                         </div>
                       </div>
-                      <h2 className="place-card__name">
+                      <h2 className="place-card__name" onClick={card.handleClick}>
                         <a href={card.link}>{card.name}</a>
                       </h2>
                       <p className="place-card__type">{card.type}</p>
@@ -168,6 +168,7 @@ MainView.propTypes = {
     rating: PropTypes.number.isRequired,
     image: PropTypes.string.isRequired,
     link: PropTypes.string.isRequired,
+    handleClick: PropTypes.func.isRequired,
     bookmarked: PropTypes.bool,
     mark: PropTypes.string
   }))
