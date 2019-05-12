@@ -9,24 +9,20 @@ it(`MainView should render correctly`, ()=>{
         cards = {[
           {
             name: `test`,
-            id: 0,
             type: `Apartment`,
             price: 1,
             rating: 1,
             image: `test`,
             link: `#`,
-            handleClick: jest.fn(),
             mark: `Premium`,
           },
           {
             name: `test`,
-            id: 1,
             type: `Private room`,
             price: 1,
             rating: 1,
             image: `test`,
             link: `#`,
-            handleClick: jest.fn(),
             bookmarked: true,
           }
         ]}
