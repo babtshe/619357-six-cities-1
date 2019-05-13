@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
 import {OfferCard} from '../offer-card/offer-card';
+import {propTypes} from './offers-list.props';
 
 class OffersList extends PureComponent {
   constructor(props) {
@@ -9,6 +9,10 @@ class OffersList extends PureComponent {
     this.state = {
       activeCard: null,
     };
+
+    this.handleMouseClick = this.handleMouseClick.bind(this);
+    this.handleMouseEnter = this.handleMouseEnter.bind(this);
+    this.handleMouseLeave = this.handleMouseLeave.bind(this);
   }
 
   handleMouseEnter(card) {
@@ -34,11 +38,11 @@ class OffersList extends PureComponent {
       <div className="cities__places-list places__list tabs__content">
         {this.props.cards.map((card, index) => {
           return <OfferCard
-            onMouseEnter = {this.handleMouseEnter.bind(this, card)}
-            onMouseLeave = {this.handleMouseLeave.bind(this)}
+            onMouseEnter = {this.handleMouseEnter}
+            onMouseLeave = {this.handleMouseLeave}
             key = {index}
             card = {card}
-            onClick = {this.handleMouseClick.bind(this)}
+            onClick = {this.handleMouseClick}
           />;
         })}
       </div>
@@ -46,17 +50,6 @@ class OffersList extends PureComponent {
   }
 }
 
-OffersList.propTypes = {
-  cards: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    type: PropTypes.oneOf([`Apartment`, `Private room`]).isRequired,
-    price: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired,
-    image: PropTypes.string.isRequired,
-    link: PropTypes.string.isRequired,
-    bookmarked: PropTypes.bool,
-    mark: PropTypes.string
-  })),
-};
+OffersList.propTypes = propTypes;
 
 export {OffersList};

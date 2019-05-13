@@ -1,10 +1,18 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, {useCallback} from 'react';
+import {propTypes} from './offer-card.props';
 
 const OfferCard = (props) => {
   const {card, onClick, onMouseEnter, onMouseLeave} = props;
+  const handleMouseEnter = useCallback(() => {
+    onMouseEnter(card);
+  }, [card]);
+  const handleMouseClick = useCallback((evt) => {
+    evt.preventDefault();
+    onClick(card);
+  }, [card]);
+
   return (
-    <article className="cities__place-card place-card" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+    <article className="cities__place-card place-card" onMouseEnter={handleMouseEnter} onMouseLeave={onMouseLeave}>
       {!!card.mark && (
         <div className="place-card__mark">
           <span>{card.mark}</span>
@@ -35,10 +43,7 @@ const OfferCard = (props) => {
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
-        <h2 className="place-card__name" onClick={(evt) => {
-          evt.preventDefault();
-          onClick(card);
-        }}>
+        <h2 className="place-card__name" onClick={handleMouseClick}>
           <a href={card.link}>{card.name}</a>
         </h2>
         <p className="place-card__type">{card.type}</p>
@@ -47,20 +52,6 @@ const OfferCard = (props) => {
   );
 };
 
-OfferCard.propTypes = {
-  card: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    type: PropTypes.oneOf([`Apartment`, `Private room`]).isRequired,
-    price: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired,
-    image: PropTypes.string.isRequired,
-    link: PropTypes.string.isRequired,
-    bookmarked: PropTypes.bool,
-    mark: PropTypes.string,
-  }),
-  onClick: PropTypes.func.isRequired,
-  onMouseEnter: PropTypes.func.isRequired,
-  onMouseLeave: PropTypes.func.isRequired,
-};
+OfferCard.propTypes = propTypes;
 
 export {OfferCard};
