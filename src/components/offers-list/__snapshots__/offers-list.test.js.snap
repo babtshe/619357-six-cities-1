@@ -99,7 +99,7 @@ exports[`OffersList should render correctly 1`] = `
         <a
           href="#"
         >
-          test
+          test1
         </a>
       </h2>
       <p
@@ -197,7 +197,7 @@ exports[`OffersList should render correctly 1`] = `
         <a
           href="#"
         >
-          test
+          test2
         </a>
       </h2>
       <p

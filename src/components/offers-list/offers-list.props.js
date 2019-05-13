@@ -1,12 +1,6 @@
 import PropTypes from 'prop-types';
+import {cardTypes} from '../offer-card/offer-card.props';
 
-export const {propTypes} = {
-  name: PropTypes.string.isRequired,
-  type: PropTypes.oneOf([`Apartment`, `Private room`]).isRequired,
-  price: PropTypes.number.isRequired,
-  rating: PropTypes.number.isRequired,
-  image: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired,
-  bookmarked: PropTypes.bool,
-  mark: PropTypes.string,
+export const propTypes = {
+  cards: PropTypes.arrayOf(PropTypes.shape(cardTypes)),
 };

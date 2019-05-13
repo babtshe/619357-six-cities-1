@@ -36,11 +36,11 @@ class OffersList extends PureComponent {
   render() {
     return (
       <div className="cities__places-list places__list tabs__content">
-        {this.props.cards.map((card, index) => {
+        {this.props.cards.map((card) => {
           return <OfferCard
             onMouseEnter = {this.handleMouseEnter}
             onMouseLeave = {this.handleMouseLeave}
-            key = {index}
+            key = {card.name}
             card = {card}
             onClick = {this.handleMouseClick}
           />;

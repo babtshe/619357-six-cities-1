@@ -33,16 +33,8 @@ const offers = [
     image: `img/apartment-03.jpg`,
     link: `#`,
     mark: `Premium`,
-  },
-  {
-    name: `Wood and stone place`,
-    type: `Private room`,
-    price: 80,
-    rating: 80,
-    image: `img/room.jpg`,
-    link: `#`,
     bookmarked: true,
-  }
+  },
 ];
 
 export {offers};

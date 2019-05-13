@@ -3,22 +3,22 @@ import renderer from 'react-test-renderer';
 import {OfferCard} from './offer-card';
 
 it(`OfferCard should render correctly`, ()=>{
-  const mock = {
-    name: `test`,
+  const mockCard = {
+    name: `test1`,
     type: `Apartment`,
     price: 1,
     rating: 1,
-    image: `test`,
+    image: `test2`,
     link: `#`,
     mark: `Premium`,
   };
   const tree = renderer
   .create(
       <OfferCard
-        card = {mock}
-        onClick = {jest.fn}
-        onMouseEnter = {jest.fn}
-        onMouseLeave = {jest.fn}
+        card = {mockCard}
+        onClick = {()=>{}}
+        onMouseEnter = {()=>{}}
+        onMouseLeave = {()=>{}}
       />)
   .toJSON();
 

@@ -23,7 +23,7 @@ exports[`OfferCard should render correctly 1`] = `
         alt="Place image"
         className="place-card__image"
         height="200"
-        src="test"
+        src="test2"
         width="260"
       />
     </a>
@@ -96,7 +96,7 @@ exports[`OfferCard should render correctly 1`] = `
       <a
         href="#"
       >
-        test
+        test1
       </a>
     </h2>
     <p

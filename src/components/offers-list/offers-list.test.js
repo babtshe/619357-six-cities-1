@@ -3,9 +3,9 @@ import renderer from 'react-test-renderer';
 import {OffersList} from './offers-list';
 
 it(`OffersList should render correctly`, ()=>{
-  const mock = [
+  const mockCards = [
     {
-      name: `test`,
+      name: `test1`,
       type: `Apartment`,
       price: 1,
       rating: 1,
@@ -14,7 +14,7 @@ it(`OffersList should render correctly`, ()=>{
       mark: `Premium`,
     },
     {
-      name: `test`,
+      name: `test2`,
       type: `Private room`,
       price: 1,
       rating: 1,
@@ -26,7 +26,7 @@ it(`OffersList should render correctly`, ()=>{
   const tree = renderer
   .create(
       <OffersList
-        cards = {mock}
+        cards = {mockCards}
       />)
   .toJSON();
 
