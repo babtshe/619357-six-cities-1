@@ -1,8 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {MainView} from './main-view';
+import {OffersList} from './offers-list';
 
-it(`MainView should render correctly`, ()=>{
+it(`OffersList should render correctly`, ()=>{
   const mockCards = [
     {
       name: `test1`,
@@ -25,7 +25,7 @@ it(`MainView should render correctly`, ()=>{
   ];
   const tree = renderer
   .create(
-      <MainView
+      <OffersList
         cards = {mockCards}
       />)
   .toJSON();

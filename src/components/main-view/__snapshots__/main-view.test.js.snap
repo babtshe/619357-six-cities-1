@@ -263,6 +263,8 @@ Array [
           >
             <article
               className="cities__place-card place-card"
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
             >
               <div
                 className="place-card__mark"
@@ -349,12 +351,12 @@ Array [
                 </div>
                 <h2
                   className="place-card__name"
-                  onClick={[MockFunction]}
+                  onClick={[Function]}
                 >
                   <a
                     href="#"
                   >
-                    test
+                    test1
                   </a>
                 </h2>
                 <p
@@ -366,6 +368,8 @@ Array [
             </article>
             <article
               className="cities__place-card place-card"
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
             >
               <div
                 className="cities__image-wrapper place-card__image-wrapper"
@@ -445,12 +449,12 @@ Array [
                 </div>
                 <h2
                   className="place-card__name"
-                  onClick={[MockFunction]}
+                  onClick={[Function]}
                 >
                   <a
                     href="#"
                   >
-                    test
+                    test2
                   </a>
                 </h2>
                 <p
