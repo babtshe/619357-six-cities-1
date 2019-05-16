@@ -11,6 +11,7 @@ it(`OfferCard should render correctly`, ()=>{
     image: `test2`,
     link: `#`,
     mark: `Premium`,
+    location: [52.3909553943508, 4.85309666406198],
   };
   const tree = renderer
   .create(

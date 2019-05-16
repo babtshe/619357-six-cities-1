@@ -8,6 +8,7 @@ const offers = [
     link: `#`,
     bookmarked: false,
     mark: `Premium`,
+    location: [52.3909553943508, 4.85309666406198],
   },
   {
     name: `Wood and stone place`,
@@ -16,6 +17,7 @@ const offers = [
     rating: 80,
     image: `img/room.jpg`,
     link: `#`,
+    location: [52.369553943508, 4.85309666406198],
   },
   {
     name: `Canal View Prinsengracht`,
@@ -24,6 +26,7 @@ const offers = [
     rating: 80,
     image: `img/apartment-02.jpg`,
     link: `#`,
+    location: [52.3909553943508, 4.929309666406198],
   },
   {
     name: `Nice, cozy, warm big bed apartment`,
@@ -34,6 +37,7 @@ const offers = [
     link: `#`,
     mark: `Premium`,
     bookmarked: true,
+    location: [52.3809553943508, 4.939309666406198],
   },
 ];
 
