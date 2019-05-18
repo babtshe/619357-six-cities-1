@@ -1,6 +1,7 @@
 import {PropTypes} from 'prop-types';
-import {cardTypes} from '../offer-card/offer-card.props';
+import {coordinates} from '../../custom-prop-types/coordinates.prop';
 
 export const propTypes = {
-  locations: PropTypes.arrayOf([cardTypes.location]).isRequired,
+  locations: PropTypes.arrayOf(coordinates).isRequired,
+  mapProvider: PropTypes.object,
 };

@@ -1,17 +1,5 @@
 import PropTypes from 'prop-types';
-
-const arrayOfCoordinates = (props, propName, componentName) => {
-  const arrayPropLength = props[propName].length;
-
-  if (!Array.isArray(props[propName]) ||
-      arrayPropLength !== 2 ||
-      props[propName].every(Number.isInteger)) {
-    return new Error(
-        `${propName} in ${componentName} has to be an array of numbers with 2 items!`
-    );
-  }
-  return null;
-};
+import {coordinates} from '../../custom-prop-types/coordinates.prop';
 
 export const cardTypes = {
   name: PropTypes.string.isRequired,
@@ -22,7 +10,7 @@ export const cardTypes = {
   link: PropTypes.string.isRequired,
   bookmarked: PropTypes.bool,
   mark: PropTypes.string,
-  location: arrayOfCoordinates.isRequired,
+  location: coordinates.isRequired,
 };
 
 export const propTypes = {

@@ -2,6 +2,21 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import {MainView} from './main-view';
 
+jest.mock(`leaflet`, () => {
+  return {
+    icon() {},
+    map() {
+      return {setView() {}};
+    },
+    tileLayer() {
+      return {addTo() {}};
+    },
+    marker() {
+      return {addTo() {}};
+    },
+  };
+});
+
 it(`MainView should render correctly`, ()=>{
   const mockCards = [
     {

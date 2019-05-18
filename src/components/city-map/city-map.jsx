@@ -9,33 +9,31 @@ class CityMap extends PureComponent {
   }
 
   componentDidMount() {
-    if (this.props.locations.length) {
-      const city = [52.38333, 4.9];
-      const icon = leaflet.icon({
-        iconUrl: `img/icon-marker.svg`,
-        iconSize: [27, 39],
-      });
-      const zoom = 12;
-      const map = leaflet.map(this.containerRef.current, {
-        center: city,
-        zoom,
-        zoomControl: false,
-        marker: true
-      });
-      map.setView(city, zoom);
+    const city = [52.38333, 4.9];
+    const icon = leaflet.icon({
+      iconUrl: `img/icon-marker.svg`,
+      iconSize: [27, 39],
+    });
+    const zoom = 12;
+    const map = leaflet.map(this.containerRef.current, {
+      center: city,
+      zoom,
+      zoomControl: false,
+      marker: true
+    });
+    map.setView(city, zoom);
 
+    leaflet
+    .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
+      attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
+    })
+    .addTo(map);
+
+    this.props.locations.forEach((location) => {
       leaflet
-      .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
-        attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
-      })
+      .marker(location, {icon})
       .addTo(map);
-
-      this.props.locations.forEach((location) => {
-        leaflet
-        .marker(location, {icon})
-        .addTo(map);
-      });
-    }
+    });
   }
 
   render() {

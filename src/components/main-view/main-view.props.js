@@ -1,6 +1,3 @@
-import {PropTypes} from 'prop-types';
-import {cardTypes} from '../offer-card/offer-card.props';
+import {propTypes as offersListTypes} from '../offers-list/offers-list.props';
 
-export const propTypes = {
-  cards: PropTypes.arrayOf(PropTypes.shape(cardTypes)),
-};
+export const propTypes = offersListTypes;
