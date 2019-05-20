@@ -15,6 +15,7 @@ it(`OfferCard link click is working`, ()=>{
     image: `test`,
     link: `#`,
     mark: `Premium`,
+    location: [52.3909553943508, 4.85309666406198],
   };
   const mainView = shallow(
       <OfferCard

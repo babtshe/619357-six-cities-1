@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import {coordinates} from '../../custom-prop-types/coordinates.prop';
 
 export const cardTypes = {
   name: PropTypes.string.isRequired,
@@ -9,6 +10,7 @@ export const cardTypes = {
   link: PropTypes.string.isRequired,
   bookmarked: PropTypes.bool,
   mark: PropTypes.string,
+  location: coordinates.isRequired,
 };
 
 export const propTypes = {

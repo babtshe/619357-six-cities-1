@@ -1,5 +1,6 @@
 import React from 'react';
 import {OffersList} from '../offers-list/offers-list';
+import {CityMap} from '../city-map/city-map';
 import {propTypes} from './main-view.props';
 
 const MainView = (props) => {
@@ -111,7 +112,11 @@ const MainView = (props) => {
             />
           </section>
           <div className="cities__right-section">
-            <section className="cities__map map"></section>
+            <section className="cities__map map">
+              <CityMap
+                locations = {cards.map((card) => card.location)}
+              />
+            </section>
           </div>
         </div>
       </div>
