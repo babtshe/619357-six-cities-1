@@ -9,7 +9,8 @@ it(`CityMap should render correctly`, ()=>{
   const tree = renderer
   .create(
       <CityMap
-        locations={mockLocations}
+        cityLocation = {[0, 0]}
+        locations = {mockLocations}
       />)
   .toJSON();
 

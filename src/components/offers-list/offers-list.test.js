@@ -29,7 +29,7 @@ it(`OffersList should render correctly`, ()=>{
   const tree = renderer
   .create(
       <OffersList
-        cards = {mockCards}
+        offers = {mockCards}
       />)
   .toJSON();
 
