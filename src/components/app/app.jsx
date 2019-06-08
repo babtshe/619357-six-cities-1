@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../reducer/reducer';
+import {ActionCreator} from '../../redux/actions';
 import {MainView} from '../main-view/main-view';
 import {propTypes} from './app.props';
 
@@ -20,20 +20,18 @@ const App = (props) => {
   />;
 };
 
-const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
+const mapStateToProps = (state) => ({
   cities: state.cities.slice(0, 6),
   currentCity: state.city,
   offers: state.offers.filter((offer) => offer.city === state.city.name),
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  setCity: (city) => {
-    dispatch(ActionCreator.setCity(city));
-  }
-});
+const mapDispatchToProps = {
+  setCity: ActionCreator.setCity
+};
 
 App.propTypes = propTypes;
 
-export {App};
+export {App, mapStateToProps, mapDispatchToProps};
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

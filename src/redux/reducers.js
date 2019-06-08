@@ -1,10 +1,6 @@
 import {offers} from '../mocks/offers';
 import {cities} from '../mocks/cities';
-
-const ActionType = {
-  SET_CITY: `SET_CITY`,
-  SET_OFFERS: `SET_OFFERS`
-};
+import {ActionType} from './types';
 
 const initialState = Object.freeze({
   city: {
@@ -14,17 +10,6 @@ const initialState = Object.freeze({
   cities,
   offers,
 });
-
-const ActionCreator = {
-  setCity: (city) => ({
-    type: ActionType.SET_CITY,
-    payload: city,
-  }),
-  setOffers: (placesOffers) => ({
-    type: ActionType.SET_OFFERS,
-    payload: placesOffers,
-  }),
-};
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -38,4 +23,4 @@ const reducer = (state = initialState, action) => {
   return state;
 };
 
-export {ActionCreator, reducer, ActionType};
+export {reducer};
