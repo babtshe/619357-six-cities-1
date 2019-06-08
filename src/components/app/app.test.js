@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {App, mapDispatchToProps, mapStateToProps} from './app';
-import {ActionType} from '../../redux/types';
+import {SET_CITY} from '../../redux/types';
 
 jest.mock(`leaflet`);
 const mockCity = {name: `test`, location: [0, 0]};
@@ -43,5 +43,5 @@ it(`Should only have current city offers`, () => {
 });
 
 it(`should change current city`, () => {
-  expect(mapDispatchToProps.setCity()).toEqual({type: ActionType.SET_CITY});
+  expect(mapDispatchToProps.setCity()).toEqual({type: SET_CITY});
 });

@@ -1,12 +1,12 @@
-import {ActionType} from './types';
+import {SET_CITY, SET_OFFERS} from './types';
 
 const ActionCreator = {
   setCity: (city) => ({
-    type: ActionType.SET_CITY,
+    type: SET_CITY,
     payload: city,
   }),
   setOffers: (placesOffers) => ({
-    type: ActionType.SET_OFFERS,
+    type: SET_OFFERS,
     payload: placesOffers,
   }),
 };

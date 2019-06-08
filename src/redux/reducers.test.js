@@ -1,5 +1,5 @@
 import {reducer} from './reducers';
-import {ActionType} from './types';
+import {SET_CITY, SET_OFFERS} from './types';
 import {offers} from '../mocks/offers';
 import {cities} from '../mocks/cities';
 
@@ -21,7 +21,7 @@ describe(`Reducer should be ok`, () => {
       offers,
       cities,
     }, {
-      type: ActionType.SET_CITY,
+      type: SET_CITY,
       payload: {
         name: `test`,
         location: [0, 0],
@@ -41,7 +41,7 @@ describe(`Reducer should be ok`, () => {
       city: ``,
       offers,
     }, {
-      type: ActionType.SET_OFFERS,
+      type: SET_OFFERS,
       payload: [`test`],
     })).toEqual({
       city: ``,
