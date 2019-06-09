@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {CityMap} from './city-map';
+import CityMap from './city-map';
 
 jest.mock(`leaflet`);
 

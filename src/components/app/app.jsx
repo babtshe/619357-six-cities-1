@@ -1,22 +1,14 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../redux/actions';
-import {MainView} from '../main-view/main-view';
+import {setCity} from '../../redux/actions';
+import MainView from '../main-view/main-view';
 import {propTypes} from './app.props';
 
 const App = (props) => {
-  const {
-    setCity,
-    cities,
-    currentCity,
-    offers
-  } = props;
+
 
   return <MainView
-    setCity = {setCity}
-    cities = {cities}
-    currentCity = {currentCity}
-    offers = {offers}
+    {...props}
   />;
 };
 
@@ -27,7 +19,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  setCity: ActionCreator.setCity
+  setCity
 };
 
 App.propTypes = propTypes;

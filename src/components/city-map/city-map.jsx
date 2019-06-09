@@ -56,4 +56,4 @@ class CityMap extends PureComponent {
 
 CityMap.propTypes = propTypes;
 
-export {CityMap};
+export default CityMap;

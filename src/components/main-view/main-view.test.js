@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {MainView} from './main-view';
+import MainView from './main-view';
 
 jest.mock(`leaflet`);
 

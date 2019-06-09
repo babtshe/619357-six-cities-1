@@ -52,4 +52,4 @@ class OffersList extends PureComponent {
 
 OffersList.propTypes = propTypes;
 
-export {OffersList};
+export default OffersList;

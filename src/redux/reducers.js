@@ -1,15 +1,5 @@
-import {offers} from '../mocks/offers';
-import {cities} from '../mocks/cities';
 import {SET_CITY, SET_OFFERS} from './types';
-
-const initialState = Object.freeze({
-  city: {
-    name: `Amsterdam`,
-    location: [52.38333, 4.9]
-  },
-  cities,
-  offers,
-});
+import initialState from './initial-state';
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {

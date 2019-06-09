@@ -34,4 +34,4 @@ const CitiesList = (props) => {
 CitiesList.propTypes = propTypes;
 
 
-export {CitiesList};
+export default CitiesList;

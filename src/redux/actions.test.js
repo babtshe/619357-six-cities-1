@@ -1,4 +1,4 @@
-import {ActionCreator} from './actions';
+import * as ActionCreator from './actions';
 import {SET_CITY, SET_OFFERS} from './types';
 
 describe(`ActionCreator should be ok`, () => {
