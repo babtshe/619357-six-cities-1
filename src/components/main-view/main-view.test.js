@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {MainView} from './main-view';
+import MainView from './main-view';
 
 jest.mock(`leaflet`);
 
@@ -28,10 +28,14 @@ it(`MainView should render correctly`, ()=>{
       location: [52.369553943508, 4.85309666406198],
     }
   ];
+  const mockCity = {name: `test`, location: [0, 0]};
   const tree = renderer
   .create(
       <MainView
-        cards = {mockCards}
+        offers = {mockCards}
+        setCity = {()=>{}}
+        cities = {[mockCity]}
+        currentCity = {mockCity}
       />)
   .toJSON();
 

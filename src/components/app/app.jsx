@@ -1,11 +1,29 @@
 import React from 'react';
-import {MainView} from '../main-view/main-view';
-import {offers} from '../../mocks/offers';
+import {connect} from 'react-redux';
+import {setCity} from '../../redux/actions';
+import MainView from '../main-view/main-view';
+import {propTypes} from './app.props';
 
-const App = () => {
+const App = (props) => {
+
+
   return <MainView
-    cards = {offers}
+    {...props}
   />;
 };
 
-export {App};
+const mapStateToProps = (state) => ({
+  cities: state.cities.slice(0, 6),
+  currentCity: state.city,
+  offers: state.offers.filter((offer) => offer.city === state.city.name),
+});
+
+const mapDispatchToProps = {
+  setCity
+};
+
+App.propTypes = propTypes;
+
+export {App, mapStateToProps, mapDispatchToProps};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

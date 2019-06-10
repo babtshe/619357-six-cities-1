@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {CityMap} from './city-map';
+import CityMap from './city-map';
 
 jest.mock(`leaflet`);
 
@@ -9,7 +9,8 @@ it(`CityMap should render correctly`, ()=>{
   const tree = renderer
   .create(
       <CityMap
-        locations={mockLocations}
+        cityLocation = {[0, 0]}
+        locations = {mockLocations}
       />)
   .toJSON();
 

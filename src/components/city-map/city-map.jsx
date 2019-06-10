@@ -6,34 +6,43 @@ class CityMap extends PureComponent {
   constructor(props) {
     super(props);
     this.containerRef = React.createRef();
-  }
-
-  componentDidMount() {
-    const city = [52.38333, 4.9];
-    const icon = leaflet.icon({
+    this.city = this.props.cityLocation;
+    this.zoom = 12;
+    this.map = null;
+    this.icon = leaflet.icon({
       iconUrl: `img/icon-marker.svg`,
       iconSize: [27, 39],
     });
-    const zoom = 12;
-    const map = leaflet.map(this.containerRef.current, {
-      center: city,
-      zoom,
+  }
+
+  renderOffers(cityLocation, offersLocations = []) {
+    this.map.setView(cityLocation, this.zoom);
+    offersLocations.forEach((location) => {
+      const icon = this.icon;
+      leaflet
+      .marker(location, {icon})
+      .addTo(this.map);
+    });
+  }
+
+  componentDidMount() {
+    this.map = leaflet.map(this.containerRef.current, {
+      center: this.city,
+      zoom: this.zoom,
       zoomControl: false,
       marker: true
     });
-    map.setView(city, zoom);
+    this.renderOffers(this.props.cityLocation, this.props.locations);
 
     leaflet
     .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
       attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
     })
-    .addTo(map);
+    .addTo(this.map);
+  }
 
-    this.props.locations.forEach((location) => {
-      leaflet
-      .marker(location, {icon})
-      .addTo(map);
-    });
+  componentDidUpdate() {
+    this.renderOffers(this.props.cityLocation, this.props.locations);
   }
 
   render() {
@@ -47,4 +56,4 @@ class CityMap extends PureComponent {
 
 CityMap.propTypes = propTypes;
 
-export {CityMap};
+export default CityMap;
