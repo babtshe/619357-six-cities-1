@@ -2,6 +2,7 @@ import React from 'react';
 import OffersList from '../offers-list/offers-list';
 import CityMap from '../city-map/city-map';
 import CitiesList from '../cities-list/cities-list';
+import withActiveItem from '../../hocs/with-active-item/with-active-item';
 import {propTypes} from './main-view.props';
 
 const MainView = (props) => {
@@ -11,6 +12,9 @@ const MainView = (props) => {
     currentCity,
     offers
   } = props;
+
+  const OffersListWrapped = withActiveItem(OffersList);
+
   return (
   <>
     <div style={{display: `none`}}>
@@ -80,7 +84,7 @@ const MainView = (props) => {
               </ul>
 
             </form>
-            <OffersList
+            <OffersListWrapped
               offers = {offers}
             />
           </section>

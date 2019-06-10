@@ -18,7 +18,7 @@ function coordinates(props, propName, componentName) {
 coordinates.isRequired = function (props, propName, componentName) {
   const prop = props[propName];
   if (typeof prop === `undefined` || prop === null) {
-    return new Error(`Failed prop type: The prop \`${propName}\` is marked as required in \`${componentName}\`, but its value is \`${prop}\`.`);
+    return new Error(`Failed prop type: The prop \`${propName}\` is marked as required in \`${componentName}\`, but its value is \`${prop}\``);
   }
 
   return coordinates(props, propName, componentName);
