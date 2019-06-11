@@ -12,6 +12,8 @@ const App = (props) => {
   />;
 };
 
+App.propTypes = propTypes;
+
 const mapStateToProps = (state) => ({
   cities: state.cities.slice(0, 6),
   currentCity: state.city,
@@ -21,8 +23,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   setCity
 };
-
-App.propTypes = propTypes;
 
 export {App, mapStateToProps, mapDispatchToProps};
 
