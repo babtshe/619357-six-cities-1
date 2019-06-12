@@ -17,7 +17,7 @@ const OffersList = (props) => {
         return <OfferCard
           onMouseEnter = {setActiveItem}
           onMouseLeave = {unsetActiveItem}
-          key = {card.name}
+          key = {card.id}
           card = {card}
           onClick = {setClickedItem}
         />;

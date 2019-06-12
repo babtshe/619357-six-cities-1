@@ -7,7 +7,7 @@ class CityMap extends PureComponent {
     super(props);
     this.containerRef = React.createRef();
     this.city = this.props.cityLocation;
-    this.zoom = 12;
+    this.zoom = this.props.zoom;
     this.map = null;
     this.icon = leaflet.icon({
       iconUrl: `img/icon-marker.svg`,
@@ -15,8 +15,8 @@ class CityMap extends PureComponent {
     });
   }
 
-  renderOffers(cityLocation, offersLocations = []) {
-    this.map.setView(cityLocation, this.zoom);
+  renderOffers(cityLocation, offersLocations = [], zoom = 12) {
+    this.map.setView(cityLocation, zoom);
     offersLocations.forEach((location) => {
       const icon = this.icon;
       leaflet
@@ -32,7 +32,7 @@ class CityMap extends PureComponent {
       zoomControl: false,
       marker: true
     });
-    this.renderOffers(this.props.cityLocation, this.props.locations);
+    this.renderOffers(this.props.cityLocation, this.props.locations, this.props.zoom);
 
     leaflet
     .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
@@ -42,7 +42,7 @@ class CityMap extends PureComponent {
   }
 
   componentDidUpdate() {
-    this.renderOffers(this.props.cityLocation, this.props.locations);
+    this.renderOffers(this.props.cityLocation, this.props.locations, this.props.zoom);
   }
 
   render() {

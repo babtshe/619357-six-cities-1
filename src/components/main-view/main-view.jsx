@@ -93,6 +93,7 @@ const MainView = (props) => {
               <CityMap
                 locations = {offers.map((card) => card.location)}
                 cityLocation = {currentCity.location}
+                zoom = {currentCity.zoom}
               />
             </section>
           </div>

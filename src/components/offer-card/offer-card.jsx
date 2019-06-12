@@ -13,9 +13,9 @@ const OfferCard = (props) => {
 
   return (
     <article className="cities__place-card place-card" onMouseEnter={handleMouseEnter} onMouseLeave={onMouseLeave}>
-      {!!card.mark && (
+      {!!card.premium && (
         <div className="place-card__mark">
-          <span>{card.mark}</span>
+          <span>Premium</span>
         </div>
       )}
       <div className="cities__image-wrapper place-card__image-wrapper">
@@ -44,7 +44,7 @@ const OfferCard = (props) => {
           </div>
         </div>
         <h2 className="place-card__name" onClick={handleMouseClick}>
-          <a href={card.link}>{card.name}</a>
+          <a href="#">{card.name}</a>
         </h2>
         <p className="place-card__type">{card.type}</p>
       </div>

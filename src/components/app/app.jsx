@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {setCity} from '../../redux/actions';
 import MainView from '../main-view/main-view';
 import {propTypes} from './app.props';
+import {getCities, getCurrentCity, getCurrentCityOffers} from '../../redux/selectors';
 
 const App = (props) => {
 
@@ -15,9 +16,9 @@ const App = (props) => {
 App.propTypes = propTypes;
 
 const mapStateToProps = (state) => ({
-  cities: state.cities.slice(0, 6),
-  currentCity: state.city,
-  offers: state.offers.filter((offer) => offer.city === state.city.name),
+  cities: getCities(state),
+  currentCity: getCurrentCity(state),
+  offers: getCurrentCityOffers(state),
 });
 
 const mapDispatchToProps = {
