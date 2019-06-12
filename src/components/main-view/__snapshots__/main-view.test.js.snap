@@ -308,7 +308,7 @@ Array [
                 <p
                   className="place-card__type"
                 >
-                  Apartment
+                  apartment
                 </p>
               </div>
             </article>
@@ -406,7 +406,7 @@ Array [
                 <p
                   className="place-card__type"
                 >
-                  Private room
+                  room
                 </p>
               </div>
             </article>

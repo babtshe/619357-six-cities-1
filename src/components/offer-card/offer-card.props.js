@@ -10,6 +10,7 @@ export const cardTypes = {
   bookmarked: PropTypes.bool,
   premium: PropTypes.bool,
   location: coordinates.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 export const propTypes = {

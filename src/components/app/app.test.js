@@ -26,7 +26,7 @@ it(`Should have maximum 6 cities`, () => {
     offers: [],
   };
 
-  expect(mapStateToProps(initialState).cities.length).toEqual(6);
+  expect(mapStateToProps(initialState).cities.length).toBeLessThanOrEqual(6);
 });
 
 it(`Should only have current city offers`, () => {
