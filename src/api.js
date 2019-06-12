@@ -18,4 +18,4 @@ const configureAPI = () => {
   return api;
 };
 
-export default configureAPI;
+export {configureAPI};
