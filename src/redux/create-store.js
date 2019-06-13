@@ -4,13 +4,17 @@ import {compose} from 'recompose';
 import {reducer} from './reducers';
 import {configureAPI} from '../api';
 
+const connectReduxDevtools = (...args) => {
+  const checkIfAvailable = () => {
+    return (typeof window !== undefined && window.__REDUX_DEVTOOLS_EXTENSION__);
+  };
+  return checkIfAvailable() ? [...args, window.__REDUX_DEVTOOLS_EXTENSION__()] : [...args];
+};
+
 const api = configureAPI((...args) => store.dispatch(...args));
 const store = createStore(
     reducer,
-    compose(
-        applyMiddleware(thunk.withExtraArgument(api)),
-        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-    )
+    compose(...connectReduxDevtools(applyMiddleware(thunk.withExtraArgument(api))))
 );
 
 export {store};
