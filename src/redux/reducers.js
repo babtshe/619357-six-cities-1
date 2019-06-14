@@ -1,5 +1,9 @@
 import {SET_CITY, SET_OFFERS} from './types';
+import {combineReducers} from 'redux';
+import cities from './cities/cities';
+import offers from './offers/offers';
 import initialState from './initial-state';
+import NameSpace from './name-space';
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -14,3 +18,8 @@ const reducer = (state = initialState, action) => {
 };
 
 export {reducer};
+
+export default combineReducers({
+  [NameSpace.OFFERS]: offers,
+  [NameSpace.CITIES]: cities,
+});

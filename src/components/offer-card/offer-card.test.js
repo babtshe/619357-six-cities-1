@@ -9,7 +9,7 @@ it(`OfferCard should render correctly`, ()=>{
     price: 1,
     rating: 1,
     image: `test2`,
-    mark: true,
+    premium: true,
     id: 1,
     location: [52.3909553943508, 4.85309666406198],
   };
