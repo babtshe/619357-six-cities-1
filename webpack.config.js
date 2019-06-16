@@ -1,7 +1,7 @@
 const path = require(`path`);
 const {DefinePlugin} = require(`webpack`);
 
-const IS_DEV = JSON.stringify(process.env.NODE_ENV !== `developement`);
+const IS_DEV = JSON.stringify(process.env.NODE_ENV === `developement`);
 
 module.exports = {
   entry: `./src/index.js`,

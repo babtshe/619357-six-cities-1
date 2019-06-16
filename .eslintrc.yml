@@ -14,6 +14,10 @@ parserOptions:
 
 plugins: ['react']
 
+globals: {
+  'IS_DEV': "readonly"
+}
+
 settings:
   react:
     version: '16'

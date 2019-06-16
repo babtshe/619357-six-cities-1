@@ -1,9 +1,10 @@
 import {createSelector} from 'reselect';
+import NameSpace from './name-space';
 
 const MAX_CITIES = 6;
 
 export const getOffers = (state) => {
-  return state.offers;
+  return state[NameSpace.OFFERS].offers;
 };
 
 export const getCities = createSelector(
@@ -22,7 +23,7 @@ export const getCities = createSelector(
 );
 
 export const getCurrentCity = (state) => {
-  return state.city;
+  return state[NameSpace.CITIES].city;
 };
 
 export const getCurrentCityOffers = createSelector(
