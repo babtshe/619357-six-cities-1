@@ -7,12 +7,12 @@ Enzyme.configure({adapter: new Adapter()});
 
 const mockCard = {
   name: `test`,
-  type: `Apartment`,
+  type: `apartment`,
   price: 1,
   rating: 1,
   image: `test`,
-  link: `#`,
-  mark: `Premium`,
+  mark: true,
+  id: 1,
   location: [52.3909553943508, 4.85309666406198],
 };
 

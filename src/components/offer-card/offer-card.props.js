@@ -3,14 +3,14 @@ import {coordinates} from '../../custom-prop-types/coordinates.prop';
 
 export const cardTypes = {
   name: PropTypes.string.isRequired,
-  type: PropTypes.oneOf([`Apartment`, `Private room`]).isRequired,
+  type: PropTypes.oneOf([`apartment`, `room`, `house`, `hotel`]).isRequired,
   price: PropTypes.number.isRequired,
   rating: PropTypes.number.isRequired,
   image: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired,
   bookmarked: PropTypes.bool,
-  mark: PropTypes.string,
+  premium: PropTypes.bool,
   location: coordinates.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 export const propTypes = {

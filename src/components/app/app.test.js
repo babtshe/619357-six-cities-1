@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {App, mapDispatchToProps, mapStateToProps} from './app';
+import {App, mapDispatchToProps} from './app';
 import {SET_CITY} from '../../redux/types';
 
 jest.mock(`leaflet`);
@@ -17,29 +17,6 @@ it(`App should render good`, ()=>{
   .toJSON();
 
   expect(tree).toMatchSnapshot();
-});
-
-
-it(`Should have maximum 6 cities`, () => {
-  const initialState = {
-    cities: (new Array(10)).fill(mockCity),
-    offers: [],
-  };
-
-  expect(mapStateToProps(initialState).cities.length).toEqual(6);
-});
-
-it(`Should only have current city offers`, () => {
-  const initialState = {
-    cities: [mockCity],
-    city: mockCity,
-    offers: [
-      {city: `test`},
-      {city: `city`},
-    ],
-  };
-
-  expect(mapStateToProps(initialState).offers.every((item)=>item.city === initialState.city.name)).toEqual(true);
 });
 
 it(`should change current city`, () => {

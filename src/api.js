@@ -1,0 +1,21 @@
+import axios from 'axios';
+
+const BASE_URL = `https://es31-server.appspot.com/six-cities`;
+const TIMEOUT = `5000`;
+
+const configureAPI = () => {
+  const api = axios.create({
+    baseURL: BASE_URL,
+    timeout: TIMEOUT,
+    withCredentials: true,
+  });
+  const onSuccess = (response) => response;
+  const onFail = (err) => {
+    return err;
+  };
+  api.interceptors.response.use(onSuccess, onFail);
+
+  return api;
+};
+
+export {configureAPI};
