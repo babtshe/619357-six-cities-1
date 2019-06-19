@@ -1,2 +1,5 @@
 export const SET_CITY = `SET_CITY`;
 export const SET_OFFERS = `SET_OFFERS`;
+export const SET_USER_DATA = `SET_USER_DATA`;
+export const SET_AUTH_STATUS = `SET_AUTH_STATUS`;
+export const SET_AUTH_REQUIRED_STATUS = `SET_AUTH_REQUIRED_STATUS`;

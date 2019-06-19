@@ -1,5 +1,5 @@
-import {reducer} from './reducers';
-import {SET_CITY, SET_OFFERS} from './types';
+import reducer from './cities';
+import {SET_CITY} from '../types';
 
 describe(`Reducer should be ok`, () => {
   it(`Reducer without additional parameters should return initial state`, () => {
@@ -9,7 +9,6 @@ describe(`Reducer should be ok`, () => {
         location: [52.38333, 4.9],
         zoom: 12
       },
-      offers: [],
       cities: [],
     });
   });
@@ -17,34 +16,19 @@ describe(`Reducer should be ok`, () => {
   it(`Reducer should set sity with given value`, () => {
     expect(reducer({
       city: `test`,
-      offers: [],
-      cities: [],
     }, {
       type: SET_CITY,
       payload: {
         name: `test`,
         location: [0, 0],
+        zoom: 12,
       },
     })).toEqual({
       city: {
         name: `test`,
         location: [0, 0],
+        zoom: 12,
       },
-      offers: [],
-      cities: [],
-    });
-  });
-
-  it(`Reducer should set offers with given value`, () => {
-    expect(reducer({
-      city: ``,
-      offers: [],
-    }, {
-      type: SET_OFFERS,
-      payload: [`test`],
-    })).toEqual({
-      city: ``,
-      offers: [`test`],
     });
   });
 });
