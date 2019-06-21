@@ -13,6 +13,9 @@ it(`App should render good`, ()=>{
     cities = {[mockCity]}
     currentCity = {mockCity}
     offers = {[]}
+    checkAuthStatus = {()=>{}}
+    userData = {{}}
+    isAuthorized = {false}
   />)
   .toJSON();
 

@@ -31,3 +31,15 @@ export const getCurrentCityOffers = createSelector(
     getCurrentCity,
     (offers, currentCity) => offers.filter((offer) => offer.city.name === currentCity.name)
 );
+
+export const getAuthRequiredStatus = (state) => {
+  return state[NameSpace.USER].isAuthorizationRequired;
+};
+
+export const getAuthStatus = (state) => {
+  return state[NameSpace.USER].isAuthorized;
+};
+
+export const getUserData = (state) => {
+  return state[NameSpace.USER].user;
+};
