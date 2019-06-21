@@ -11,13 +11,13 @@ const SignIn = (props) => {
   const handleFormSubmit = useCallback((evt) => {
     evt.preventDefault();
     onSubmit();
-  }, []);
+  }, [onSubmit]);
 
   const handleInputChange = useCallback((evt) => {
     const name = evt.target.name;
     const value = evt.target.value;
     onChange(name, value);
-  }, []);
+  }, [onChange]);
 
   return (
     <main className="page__main page__main--login">

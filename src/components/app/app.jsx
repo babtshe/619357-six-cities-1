@@ -5,7 +5,7 @@ import Header from '../header/header';
 import MainView from '../main-view/main-view';
 import SignIn from '../sign-in/sign-in';
 import withAuthorization from '../../hocs/with-authorizaion/with-authorization';
-import {fetchUserData, loginUser} from '../../redux/operations';
+import {loginUser} from '../../redux/operations';
 import {propTypes} from './app.props';
 import {getCities, getCurrentCity, getCurrentCityOffers, getAuthRequiredStatus, getAuthStatus, getUserData} from '../../redux/selectors';
 
@@ -14,7 +14,7 @@ const SignInWrapped = withAuthorization(SignIn);
 class App extends PureComponent {
   constructor(props) {
     super(props);
-    this.props.checkAuthStatus();
+    this.renderView = this.renderView.bind(this);
   }
 
   render() {
@@ -70,7 +70,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   setCity,
-  checkAuthStatus: () => fetchUserData(),
+  // checkAuthStatus: () => fetchUserData(),
   toggleAuthRequiredStatus: (status) => setAuthRequiredStatus(!status),
   login: (data) => loginUser(data),
 };

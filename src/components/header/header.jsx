@@ -11,11 +11,11 @@ const Header = (props) => {
   const handleLoginClick = useCallback((evt) => {
     evt.preventDefault();
     onLoginClick();
-  }, []);
+  }, [onLoginClick]);
   const handleProfileClick = useCallback((evt) => {
     evt.preventDefault();
     onProfileClick();
-  }, []);
+  }, [onProfileClick]);
   return (
     <>
     <div style={{display: `none`}}>
@@ -46,9 +46,7 @@ const Header = (props) => {
                 <a className="header__nav-link header__nav-link--profile" onClick={handleProfileClick} href="#">
                   <div className="header__avatar-wrapper user__avatar-wrapper">
                   </div>
-                  {isAuthorized ?
-                    <span className="header__user-name user__name">{userEmail}</span>
-                    :
+                  {isAuthorized ? <span className="header__user-name user__name">{userEmail}</span> :
                     <span className="header__login" href="#" onClick={handleLoginClick}>Sign in</span>
                   }
                 </a>
