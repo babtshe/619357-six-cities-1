@@ -1,61 +1,46 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import {setCity, setAuthRequiredStatus} from '../../redux/actions';
 import Header from '../header/header';
 import MainView from '../main-view/main-view';
+import Favorites from '../favorites/favorites';
+import withPrivateRoute from '../../hocs/with-private-route/with-private-route';
 import SignIn from '../sign-in/sign-in';
 import withAuthorization from '../../hocs/with-authorizaion/with-authorization';
+import {Switch, Route} from 'react-router-dom';
 import {loginUser} from '../../redux/operations';
 import {propTypes} from './app.props';
 import {getCities, getCurrentCity, getCurrentCityOffers, getAuthRequiredStatus, getAuthStatus, getUserData} from '../../redux/selectors';
 
 const SignInWrapped = withAuthorization(SignIn);
+const FavoritesWrapped = withPrivateRoute(Favorites);
 
-class App extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.renderView = this.renderView.bind(this);
-  }
+const App = (props) => {
+  const {
+    isAuthorized,
+    toggleAuthRequiredStatus,
+    isAuthRequired,
+    userData,
+    login
+  } = props;
 
-  render() {
-    const {
-      isAuthorized,
-      toggleAuthRequiredStatus,
-      isAuthRequired,
-      userData,
-    } = this.props;
-
-
-    return (
-      <>
-        <Header
-          isAuthorized = {isAuthorized}
-          onLoginClick = {() => {
-            toggleAuthRequiredStatus(isAuthRequired);
-          }}
-          userEmail = {userData.email}
-        />
-        {this.renderView()}
-      </>
-    );
-  }
-
-  renderView() {
-    const {
-      isAuthRequired,
-      isAuthorized,
-      login,
-    } = this.props;
-    return (isAuthRequired && !isAuthorized) ?
-      <SignInWrapped
-        login = {login}
+  return (
+    <>
+      <Header
+        isAuthorized = {isAuthorized}
+        onLoginClick = {() => {
+          toggleAuthRequiredStatus(isAuthRequired);
+        }}
+        userEmail = {userData.email}
       />
-      :
-      <MainView
-        {...this.props}
-      />;
-  }
-}
+      <Switch>
+        <Route exact path="/" render={() => <MainView {...props}/>}></Route>
+        <Route path="/login" render={(routeProps) => <SignInWrapped from={routeProps.location.state} login={login}/>}></Route>
+        <Route path="/favorites" render={(routeProps) => <FavoritesWrapped location={routeProps.location}/>}></Route>
+      </Switch>
+    </>
+  );
+};
 
 App.propTypes = propTypes;
 
@@ -70,7 +55,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   setCity,
-  // checkAuthStatus: () => fetchUserData(),
   toggleAuthRequiredStatus: (status) => setAuthRequiredStatus(!status),
   login: (data) => loginUser(data),
 };

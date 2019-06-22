@@ -25,7 +25,7 @@ const loginUser = (email, password) => (dispatch, _, api) => {
 const fetchUserData = () => (dispatch, _, api) => {
   return api.get(LOGIN_REQUEST)
   .then((response) => {
-    if (response.data) {
+    if (response.status === STATUS_OK && response.data) {
       dispatch(setAuthStatus(true));
       return dispatch(setUserData(response.data));
     }

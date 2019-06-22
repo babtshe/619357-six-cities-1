@@ -15,7 +15,7 @@ parserOptions:
 plugins: ['react']
 
 globals: {
-  'IS_DEV': "readonly"
+  'IS_DEV': 'readonly'
 }
 
 settings:

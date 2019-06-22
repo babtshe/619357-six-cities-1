@@ -1,21 +1,12 @@
-import React, {useCallback} from 'react';
+import React from 'react';
+import {Link} from 'react-router-dom';
 import {propTypes} from './header.props';
 
 const Header = (props) => {
   const {
     isAuthorized,
     userEmail,
-    onLoginClick,
-    onProfileClick = ()=>{},
   } = props;
-  const handleLoginClick = useCallback((evt) => {
-    evt.preventDefault();
-    onLoginClick();
-  }, [onLoginClick]);
-  const handleProfileClick = useCallback((evt) => {
-    evt.preventDefault();
-    onProfileClick();
-  }, [onProfileClick]);
   return (
     <>
     <div style={{display: `none`}}>
@@ -36,20 +27,19 @@ const Header = (props) => {
       <div className="container">
         <div className="header__wrapper">
           <div className="header__left">
-            <a className="header__logo-link header__logo-link--active">
+            <Link to="/" className="header__logo-link header__logo-link--active">
               <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41" />
-            </a>
+            </Link>
           </div>
           <nav className="header__nav">
             <ul className="header__nav-list">
               <li className="header__nav-item user">
-                <a className="header__nav-link header__nav-link--profile" onClick={handleProfileClick} href="#">
-                  <div className="header__avatar-wrapper user__avatar-wrapper">
-                  </div>
-                  {isAuthorized ? <span className="header__user-name user__name">{userEmail}</span> :
-                    <span className="header__login" href="#" onClick={handleLoginClick}>Sign in</span>
-                  }
-                </a>
+                <Link className="header__nav-link header__nav-link--profile" to={isAuthorized ? `/favorites` : `/login`}>
+                  <div className="header__avatar-wrapper user__avatar-wrapper"/>
+                  <span className={isAuthorized ? `header__user-name user__name` : `header__login`}>
+                    {isAuthorized ? userEmail : `Sign in`}
+                  </span>
+                </Link>
               </li>
             </ul>
           </nav>

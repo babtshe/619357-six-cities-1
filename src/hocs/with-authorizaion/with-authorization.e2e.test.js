@@ -12,14 +12,13 @@ it(`setting value on change works correctly`, () => {
   const wrappedComponent = shallow(<WithActiveItem
     login = {() => {}}
   />);
-
-  wrappedComponent.props().onChange(`name`, `value`);
+  wrappedComponent.props().children[0].props.onChange(`name`, `value`);
   expect(wrappedComponent.state()[`name`]).toEqual(`value`);
 });
 
 it(`sending data on submit works correctly`, () => {
   const WithActiveItem = withAuthorization(mockComponent);
-  const submitHandler = jest.fn();
+  const submitHandler = jest.fn().mockImplementation(() => Promise.resolve());
   const mockState = {
     email: `email`,
     password: `password`,
@@ -29,7 +28,7 @@ it(`sending data on submit works correctly`, () => {
   />);
   wrappedComponent.setState(mockState);
 
-  wrappedComponent.props().onSubmit();
+  wrappedComponent.props().children[0].props.onSubmit();
   expect(submitHandler).toHaveBeenCalledTimes(1);
   expect(submitHandler).toHaveBeenCalledWith(mockState.email, mockState.password);
 
