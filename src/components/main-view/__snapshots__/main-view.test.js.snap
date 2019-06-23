@@ -131,6 +131,7 @@ exports[`MainView should render correctly 1`] = `
             >
               <a
                 href="#"
+                onClick={[Function]}
               >
                 <img
                   alt="Place image"
@@ -204,10 +205,10 @@ exports[`MainView should render correctly 1`] = `
               </div>
               <h2
                 className="place-card__name"
-                onClick={[Function]}
               >
                 <a
-                  href="#"
+                  href="/offer/1"
+                  onClick={[Function]}
                 >
                   test1
                 </a>
@@ -229,6 +230,7 @@ exports[`MainView should render correctly 1`] = `
             >
               <a
                 href="#"
+                onClick={[Function]}
               >
                 <img
                   alt="Place image"
@@ -302,10 +304,10 @@ exports[`MainView should render correctly 1`] = `
               </div>
               <h2
                 className="place-card__name"
-                onClick={[Function]}
               >
                 <a
-                  href="#"
+                  href="/offer/2"
+                  onClick={[Function]}
                 >
                   test2
                 </a>

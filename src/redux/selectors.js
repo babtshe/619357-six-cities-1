@@ -43,3 +43,7 @@ export const getAuthStatus = (state) => {
 export const getUserData = (state) => {
   return state[NameSpace.USER].user;
 };
+
+export const getOfferById = (state, props) => {
+  return state[NameSpace.OFFERS].offers.filter((offer)=>offer.id === +props.offerId)[0];
+};

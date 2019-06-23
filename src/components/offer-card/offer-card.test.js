@@ -1,5 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import {MemoryRouter} from 'react-router-dom';
 import {OfferCard} from './offer-card';
 
 it(`OfferCard should render correctly`, ()=>{
@@ -15,12 +16,14 @@ it(`OfferCard should render correctly`, ()=>{
   };
   const tree = renderer
   .create(
-      <OfferCard
-        card = {mockCard}
-        onClick = {()=>{}}
-        onMouseEnter = {()=>{}}
-        onMouseLeave = {()=>{}}
-      />)
+      <MemoryRouter>
+        <OfferCard
+          card = {mockCard}
+          onClick = {()=>{}}
+          onMouseEnter = {()=>{}}
+          onMouseLeave = {()=>{}}
+        />
+      </MemoryRouter>)
   .toJSON();
 
   expect(tree).toMatchSnapshot();

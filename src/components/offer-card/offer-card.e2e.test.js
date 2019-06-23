@@ -27,7 +27,7 @@ it(`OfferCard link click is working`, ()=>{
       />
   );
 
-  const cardLink = mainView.find(`.place-card__name`);
+  const cardLink = mainView.find(`.place-card__image-wrapper > a`);
   cardLink.simulate(`click`, {preventDefault() {}});
   expect(clickHandler).toHaveBeenCalledTimes(1);
   expect(clickHandler).toHaveBeenCalledWith(mockCard);

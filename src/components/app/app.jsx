@@ -7,6 +7,7 @@ import Favorites from '../favorites/favorites';
 import withPrivateRoute from '../../hocs/with-private-route/with-private-route';
 import SignIn from '../sign-in/sign-in';
 import withAuthorization from '../../hocs/with-authorizaion/with-authorization';
+import OfferDetails from '../offer-details/offer-details';
 import {Switch, Route} from 'react-router-dom';
 import {loginUser} from '../../redux/operations';
 import {propTypes} from './app.props';
@@ -23,7 +24,6 @@ const App = (props) => {
     userData,
     login
   } = props;
-
   return (
     <>
       <Header
@@ -35,8 +35,9 @@ const App = (props) => {
       />
       <Switch>
         <Route exact path="/" render={() => <MainView {...props}/>}></Route>
-        <Route path="/login" render={(routeProps) => <SignInWrapped from={routeProps.location.state} login={login}/>}></Route>
-        <Route path="/favorites" render={(routeProps) => <FavoritesWrapped location={routeProps.location}/>}></Route>
+        <Route exact path="/login" render={(routeProps) => <SignInWrapped from={routeProps.location.state} login={login}/>}></Route>
+        <Route exact path="/favorites" render={(routeProps) => <FavoritesWrapped location={routeProps.location}/>}></Route>
+        <Route exact path="/offer/:id" render={(routeProps) => <OfferDetails offerId={routeProps.match.params.id}/>}></Route>
       </Switch>
     </>
   );
