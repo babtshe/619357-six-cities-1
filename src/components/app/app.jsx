@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {connect} from 'react-redux';
 import {setCity, setAuthRequiredStatus} from '../../redux/actions';
 import Header from '../header/header';
@@ -24,20 +24,23 @@ const App = (props) => {
     userData,
     login
   } = props;
+  const loginClickHandler = useCallback((evt) => {
+    evt.preventDefault();
+    toggleAuthRequiredStatus(isAuthRequired);
+  }, [toggleAuthRequiredStatus, isAuthRequired]);
   return (
     <>
       <Header
         isAuthorized = {isAuthorized}
-        onLoginClick = {() => {
-          toggleAuthRequiredStatus(isAuthRequired);
-        }}
+        onLoginClick = {loginClickHandler}
         userEmail = {userData.email}
       />
       <Switch>
-        <Route exact path="/" render={() => <MainView {...props}/>}></Route>
-        <Route exact path="/login" render={(routeProps) => <SignInWrapped from={routeProps.location.state} login={login}/>}></Route>
-        <Route exact path="/favorites" render={(routeProps) => <FavoritesWrapped location={routeProps.location}/>}></Route>
-        <Route exact path="/offer/:id" render={(routeProps) => <OfferDetails offerId={routeProps.match.params.id}/>}></Route>
+        <Route exact path="/" render={() => <MainView {...props}/>}/>
+        <Route exact path="/login" render={(routeProps) => <SignInWrapped from={routeProps.location.state} login={login}/>}/>
+        <Route exact path="/favorites" render={(routeProps) => <FavoritesWrapped location={routeProps.location}/>}/>
+        <Route exact path="/offer/:id" render={(routeProps) => <OfferDetails offerId={routeProps.match.params.id}/>}/>
+        <Route render={() => <h1>404 - Not Found</h1>} />
       </Switch>
     </>
   );

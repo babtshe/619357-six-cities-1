@@ -1,6 +1,7 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
+import hoistNonReactStatic from 'hoist-non-react-statics';
 import {compose} from 'redux';
 import {propTypes} from './with-private-route.props';
 import {getAuthStatus} from '../../redux/selectors';
@@ -18,7 +19,7 @@ const withPrivateRoute = (Component) => {
 
   WithPrivateRoute.propTypes = propTypes;
 
-  return WithPrivateRoute;
+  return hoistNonReactStatic(WithPrivateRoute, Component);
 };
 
 const mapStateToProps = (state) => ({

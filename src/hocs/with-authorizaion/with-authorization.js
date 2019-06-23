@@ -32,15 +32,15 @@ const withAuthorization = (Component) => {
     }
 
     render() {
-      return (<>
+      if (this.state.redirectToReferrer) {
+        return <Redirect to={this.state.from}/>;
+      }
+      return (
         <Component
           onChange = {this.onChange}
           onSubmit = {this.onSubmit}
           userData = {this.state}
-        />
-        {this.state.redirectToReferrer ? <Redirect to={this.state.from}/> : ``}
-        </>
-      );
+        />);
     }
   }
 
