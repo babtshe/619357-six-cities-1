@@ -32,7 +32,7 @@ const withAuthorization = (Component) => {
     }
 
     render() {
-      if (this.state.redirectToReferrer) {
+      if (this.state.redirectToReferrer || this.props.isAuthorized) {
         return <Redirect to={this.state.from}/>;
       }
       return (

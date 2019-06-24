@@ -332,7 +332,6 @@ exports[`MainView should render correctly 1`] = `
             style={
               Object {
                 "height": "100%",
-                "minHeight": "800px",
                 "width": "100%",
               }
             }

@@ -1,4 +1,12 @@
-const adapter = (data = []) => {
+const getRatingPercent = (value) => Math.max(Math.floor(value + 0.5), 5) * 20;
+const adaptDateString = (dateString) => {
+  const date = new Date(dateString);
+  const month = date.toLocaleString(`en-us`, {month: `long`});
+  const year = date.getFullYear();
+  return `${month} ${year}`;
+};
+
+export const offersAdapter = (data = []) => {
   const result = [];
 
   for (const item of data) {
@@ -27,10 +35,29 @@ const adapter = (data = []) => {
       name: item.title,
       bookmarked: item[`is_favorite`],
       premium: item[`is_premium`],
-      rating: Math.max(Math.floor(item.rating + 0.5), 5) * 20,
+      rating: getRatingPercent(item.rating),
     });
   }
   return result;
 };
 
-export default adapter;
+export const reviewsAdapter = (data = []) => {
+  const result = [];
+
+  for (const item of data) {
+    result.push({
+      comment: item.comment,
+      date: item.date.split(`T`)[0],
+      dateString: adaptDateString(item.date),
+      id: item.id,
+      rating: getRatingPercent(item.rating),
+      user: {
+        id: item.user.id,
+        name: item.user.name,
+        avatar: item.user[`avatar_url`],
+        pro: item.user[`is_pro`],
+      }
+    });
+  }
+  return result;
+};

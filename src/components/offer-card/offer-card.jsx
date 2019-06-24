@@ -3,7 +3,7 @@ import {propTypes} from './offer-card.props';
 import {Link} from 'react-router-dom';
 
 const OfferCard = (props) => {
-  const {card, onClick, onMouseEnter, onMouseLeave} = props;
+  const {card, onClick, onMouseEnter, onMouseLeave, classPrefix} = props;
   const handleMouseEnter = useCallback(() => {
     onMouseEnter(card);
   }, [card]);
@@ -13,13 +13,13 @@ const OfferCard = (props) => {
   }, [card]);
 
   return (
-    <article className="cities__place-card place-card" onMouseEnter={handleMouseEnter} onMouseLeave={onMouseLeave}>
+    <article className={`${classPrefix}__place-card place-card`} onMouseEnter={handleMouseEnter} onMouseLeave={onMouseLeave}>
       {!!card.premium && (
         <div className="place-card__mark">
           <span>Premium</span>
         </div>
       )}
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className={`${classPrefix}__image-wrapper place-card__image-wrapper`}>
         <a href="#" onClick={handleMouseClick}>
           <img className="place-card__image" src={card.image} width="260" height="200"
             alt="Place image" />

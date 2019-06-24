@@ -9,16 +9,21 @@ class CityMap extends PureComponent {
     this.city = this.props.cityLocation;
     this.zoom = this.props.zoom;
     this.map = null;
+    this.activeLocation = this.props.activeLocation || [];
     this.icon = leaflet.icon({
       iconUrl: `img/icon-marker.svg`,
       iconSize: [27, 39],
     });
+    this.activeIcon = leaflet.icon({
+      iconUrl: `img/icon-marker-active.svg`,
+      iconSize: [27, 39],
+    });
   }
 
-  renderOffers(cityLocation, offersLocations = [], zoom = 12) {
+  renderOffers(cityLocation, offersLocations = [], zoom = 12, activeLocation) {
     this.map.setView(cityLocation, zoom);
     offersLocations.forEach((location) => {
-      const icon = this.icon;
+      const icon = (location === activeLocation) ? this.activeIcon : this.icon;
       leaflet
       .marker(location, {icon})
       .addTo(this.map);
@@ -32,7 +37,7 @@ class CityMap extends PureComponent {
       zoomControl: false,
       marker: true
     });
-    this.renderOffers(this.props.cityLocation, this.props.locations, this.props.zoom);
+    this.renderOffers(this.props.cityLocation, this.props.locations, this.props.zoom, this.props.activeLocation);
 
     leaflet
     .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
@@ -42,13 +47,12 @@ class CityMap extends PureComponent {
   }
 
   componentDidUpdate() {
-    this.renderOffers(this.props.cityLocation, this.props.locations, this.props.zoom);
+    this.renderOffers(this.props.cityLocation, this.props.locations, this.props.zoom, this.props.activeLocation);
   }
 
   render() {
     return <div id="map" style={{
       width: `100%`,
-      minHeight: `800px`,
       height: `100%`,
     }} ref={this.containerRef}></div>;
   }

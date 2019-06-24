@@ -1,10 +1,14 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {OfferDetails} from './offer-details';
+import {MemoryRouter} from 'react-router-dom';
 
 it(`OfferDetails should render correctly`, ()=>{
   const mockOffer = {
     name: `test1`,
+    city: {
+      location: [52.3909553943508, 4.85309666406198],
+    },
     type: `apartment`,
     price: 1,
     rating: 1,
@@ -23,10 +27,14 @@ it(`OfferDetails should render correctly`, ()=>{
     bedrooms: 1,
   };
   const tree = renderer
-  .create(
-      <OfferDetails
-        offer={mockOffer}
-      />)
+  .create(<MemoryRouter>
+    <OfferDetails
+      offer={mockOffer}
+      nearestOffers={[mockOffer]}
+      reviews={[]}
+      fetchReviews={()=>{}}
+    />
+  </MemoryRouter>)
   .toJSON();
 
   expect(tree).toMatchSnapshot();

@@ -37,7 +37,7 @@ const App = (props) => {
       />
       <Switch>
         <Route exact path="/" render={() => <MainView {...props}/>}/>
-        <Route exact path="/login" render={(routeProps) => <SignInWrapped from={routeProps.location.state} login={login}/>}/>
+        <Route exact path="/login" render={(routeProps) => <SignInWrapped isAuthorized={isAuthorized} from={routeProps.location.state} login={login}/>}/>
         <Route exact path="/favorites" render={(routeProps) => <FavoritesWrapped location={routeProps.location}/>}/>
         <Route exact path="/offer/:id" render={(routeProps) => <OfferDetails offerId={routeProps.match.params.id}/>}/>
         <Route render={() => <h1>404 - Not Found</h1>} />

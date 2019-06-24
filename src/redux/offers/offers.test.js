@@ -5,6 +5,7 @@ describe(`Reducer should be ok`, () => {
   it(`Reducer without additional parameters should return initial state`, () => {
     expect(reducer(undefined, {})).toEqual({
       offers: [],
+      reviews: [],
     });
   });
 

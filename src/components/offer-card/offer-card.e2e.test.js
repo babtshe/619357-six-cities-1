@@ -41,6 +41,7 @@ it(`OfferCard mouseEnter is working`, ()=>{
         onClick = {()=>{}}
         onMouseEnter = {mouseEnterHandler}
         onMouseLeave = {()=>{}}
+        classPrefix = {`cities`}
       />
   );
 
