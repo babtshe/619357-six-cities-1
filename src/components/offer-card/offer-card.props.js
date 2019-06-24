@@ -18,4 +18,5 @@ export const propTypes = {
   onClick: PropTypes.func.isRequired,
   onMouseEnter: PropTypes.func.isRequired,
   onMouseLeave: PropTypes.func.isRequired,
+  classPrefix: PropTypes.string,
 };
