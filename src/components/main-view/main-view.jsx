@@ -49,6 +49,7 @@ const MainView = (props) => {
             </form>
             <OffersListWrapped
               offers = {offers}
+              classPrefix = {`cities`}
             />
           </section>
           <div className="cities__right-section">

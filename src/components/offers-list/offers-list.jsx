@@ -9,10 +9,11 @@ const OffersList = (props) => {
     setActiveItem,
     unsetActiveItem,
     setClickedItem,
+    classPrefix
   } = props;
 
   return (
-    <div className="cities__places-list places__list tabs__content">
+    <div className={`${classPrefix}__places-list places__list tabs__content`}>
       {offers.map((card) => {
         return <OfferCard
           onMouseEnter = {setActiveItem}
@@ -20,6 +21,7 @@ const OffersList = (props) => {
           key = {card.id}
           card = {card}
           onClick = {setClickedItem}
+          classPrefix = {classPrefix}
         />;
       })}
     </div>

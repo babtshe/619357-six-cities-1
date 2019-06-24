@@ -2,6 +2,6 @@
 
 exports[`OffersList should render correctly 1`] = `
 <div
-  className="cities__places-list places__list tabs__content"
+  className="undefined__places-list places__list tabs__content"
 />
 `;

@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
 import {propTypes} from './with-authorization.props';
+import {Redirect} from 'react-router-dom';
 
 const withAuthorization = (Component) => {
   class WithAuthorization extends PureComponent {
@@ -8,6 +9,7 @@ const withAuthorization = (Component) => {
       this.state = {
         email: ``,
         password: ``,
+        from: (this.props.from || {}).from || `/`,
       };
       this.onChange = this.onChange.bind(this);
       this.onSubmit = this.onSubmit.bind(this);
@@ -21,17 +23,24 @@ const withAuthorization = (Component) => {
 
     onSubmit() {
       const {email, password} = this.state;
-      this.props.login(email, password);
+      this.props.login(email, password)
+      .then(()=>{
+        this.setState({
+          redirectToReferrer: true,
+        });
+      });
     }
 
     render() {
+      if (this.state.redirectToReferrer || this.props.isAuthorized) {
+        return <Redirect to={this.state.from}/>;
+      }
       return (
         <Component
           onChange = {this.onChange}
           onSubmit = {this.onSubmit}
           userData = {this.state}
-        />
-      );
+        />);
     }
   }
 

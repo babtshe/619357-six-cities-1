@@ -14,6 +14,7 @@ module.exports = {
     compress: false,
     port: 1337,
     open: true,
+    historyApiFallback: true,
   },
   module: {
     rules: [
@@ -32,7 +33,7 @@ module.exports = {
   },
   plugins: [
     new DefinePlugin({
-      IS_DEV,
+      IS_DEV
     })
   ]
 };

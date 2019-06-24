@@ -1,8 +1,9 @@
 import React, {useCallback} from 'react';
 import {propTypes} from './offer-card.props';
+import {Link} from 'react-router-dom';
 
 const OfferCard = (props) => {
-  const {card, onClick, onMouseEnter, onMouseLeave} = props;
+  const {card, onClick, onMouseEnter, onMouseLeave, classPrefix} = props;
   const handleMouseEnter = useCallback(() => {
     onMouseEnter(card);
   }, [card]);
@@ -12,14 +13,14 @@ const OfferCard = (props) => {
   }, [card]);
 
   return (
-    <article className="cities__place-card place-card" onMouseEnter={handleMouseEnter} onMouseLeave={onMouseLeave}>
+    <article className={`${classPrefix}__place-card place-card`} onMouseEnter={handleMouseEnter} onMouseLeave={onMouseLeave}>
       {!!card.premium && (
         <div className="place-card__mark">
           <span>Premium</span>
         </div>
       )}
-      <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="#">
+      <div className={`${classPrefix}__image-wrapper place-card__image-wrapper`}>
+        <a href="#" onClick={handleMouseClick}>
           <img className="place-card__image" src={card.image} width="260" height="200"
             alt="Place image" />
         </a>
@@ -43,8 +44,8 @@ const OfferCard = (props) => {
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
-        <h2 className="place-card__name" onClick={handleMouseClick}>
-          <a href="#">{card.name}</a>
+        <h2 className="place-card__name">
+          <Link to={`/offer/${card.id}`}>{card.name}</Link>
         </h2>
         <p className="place-card__type">{card.type}</p>
       </div>

@@ -1,17 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {HashRouter} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import store from './redux/create-store';
 import App from './components/app/app';
 import {fetchOffers, fetchUserData} from './redux/operations';
 
+store.dispatch(fetchUserData());
 store.dispatch(fetchOffers);
-store.dispatch(fetchUserData);
 
 const init = () => {
   ReactDOM.render(
       <Provider store = {store}>
-        <App/>
+        <HashRouter>
+          <App/>
+        </HashRouter>
       </Provider>, document.getElementById(`root`)
   );
 };

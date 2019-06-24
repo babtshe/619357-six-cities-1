@@ -1,4 +1,11 @@
-import {SET_CITY, SET_OFFERS, SET_USER_DATA, SET_AUTH_STATUS, SET_AUTH_REQUIRED_STATUS} from './types';
+import {
+  SET_CITY,
+  SET_OFFERS,
+  SET_USER_DATA,
+  SET_AUTH_STATUS,
+  SET_AUTH_REQUIRED_STATUS,
+  SET_REVIEWS_DATA,
+} from './types';
 
 export const setCity = (city) => ({
   type: SET_CITY,
@@ -23,4 +30,9 @@ export const setAuthStatus = (status) => ({
 export const setAuthRequiredStatus = (status) => ({
   type: SET_AUTH_REQUIRED_STATUS,
   payload: status,
+});
+
+export const setReviewsData = (data) => ({
+  type: SET_REVIEWS_DATA,
+  payload: data,
 });
