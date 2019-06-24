@@ -37,6 +37,7 @@ const withAuthorization = (Component) => {
       }
       return (
         <Component
+          {...this.props}
           onChange = {this.onChange}
           onSubmit = {this.onSubmit}
           userData = {this.state}

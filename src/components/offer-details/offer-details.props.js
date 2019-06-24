@@ -15,6 +15,6 @@ export const propTypes = {
     maxGuests: PropTypes.number.isRequired,
     goods: PropTypes.arrayOf(PropTypes.string),
     host: PropTypes.shape(hostTypes).isRequired,
-  })).isRequired,
+  })),
   onAddFavorites: PropTypes.func,
 };

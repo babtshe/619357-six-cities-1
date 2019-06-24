@@ -18,16 +18,21 @@ class CityMap extends PureComponent {
       iconUrl: `img/icon-marker-active.svg`,
       iconSize: [27, 39],
     });
+    this.markerLayerGroup = null;
   }
 
   renderOffers(cityLocation, offersLocations = [], zoom = 12, activeLocation) {
+    if (this.markerLayerGroup) {
+      this.markerLayerGroup.clearLayers();
+    }
     this.map.setView(cityLocation, zoom);
-    offersLocations.forEach((location) => {
+    const markers = offersLocations.map((location) => {
       const icon = (location === activeLocation) ? this.activeIcon : this.icon;
-      leaflet
-      .marker(location, {icon})
-      .addTo(this.map);
+      return leaflet.marker(location, {icon});
     });
+    this.markerLayerGroup = leaflet
+    .layerGroup(markers)
+    .addTo(this.map);
   }
 
   componentDidMount() {

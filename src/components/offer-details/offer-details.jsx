@@ -13,6 +13,8 @@ const OffersListWrapped = withActiveItem(OffersList);
 class OfferDetails extends PureComponent {
   constructor(props) {
     super(props);
+    this.topElement = React.createRef();
+    this.scrollToTop = this.scrollToTop.bind(this);
   }
 
   render() {
@@ -38,7 +40,7 @@ class OfferDetails extends PureComponent {
       description,
     } = offer;
     return (
-      <main className="page__main page__main--property">
+      <main ref={this.topElement} className="page__main page__main--property">
         <section className="property">
           <div className="property__gallery-container container">
             <div className="property__gallery">
@@ -162,7 +164,12 @@ class OfferDetails extends PureComponent {
   componentDidUpdate(prevProps) {
     if (prevProps.offerId !== this.props.offerId) {
       this.props.fetchReviews(this.props.offerId);
+      this.scrollToTop();
     }
+  }
+
+  scrollToTop() {
+    this.topElement.current.scrollIntoView();
   }
 }
 
