@@ -9,6 +9,7 @@ import withQuery from '../../hocs/with-query/with-query';
 import {withRouter} from 'react-router-dom';
 import withSorting from '../../hocs/with-sorting/with-sorting';
 import {propTypes} from './main-view.props';
+import MainEmpty from '../main-empty/main-empty';
 
 const MainView = (props) => {
   const {
@@ -35,31 +36,37 @@ const MainView = (props) => {
         />
       </div>
       <div className="cities__places-wrapper">
-        <div className="cities__places-container container">
-          <section className="cities__places places">
-            <h2 className="visually-hidden">Places</h2>
-            <b className="places__found">{offers.length} place{(offers.length === 1) ? `` : `s`} to stay in {currentCity.name}</b>
-            <SortingWrapped
-            />
-            <OffersListWrapped
-              offers = {offers}
-              classPrefix = {`cities`}
-              setClickedItem = {setClickedItem}
-            />
-          </section>
-          <div className="cities__right-section">
-            <section className="cities__map map">
-              <CityMap
-                locations = {locations}
-                cityLocation = {currentCity.location}
-                zoom = {currentCity.zoom}
-                activeLocation = {clickedItem ? clickedItem.location : null}
+        {(offers && offers.length) ?
+          <div className="cities__places-container container">
+            <section className="cities__places places">
+              <h2 className="visually-hidden">Places</h2>
+              <b className="places__found">{offers.length} place{(offers.length === 1) ? `` : `s`} to stay in {currentCity.name}</b>
+              <SortingWrapped
+              />
+              <OffersListWrapped
+                offers = {offers}
+                classPrefix = {`cities`}
+                setClickedItem = {setClickedItem}
               />
             </section>
+            <div className="cities__right-section">
+              <section className="cities__map map">
+                <CityMap
+                  locations = {locations}
+                  cityLocation = {currentCity.location}
+                  zoom = {currentCity.zoom}
+                  activeLocation = {clickedItem ? clickedItem.location : null}
+                />
+              </section>
+            </div>
           </div>
-        </div>
-      </div>
+          :
+          <MainEmpty
+            cityName={currentCity.name}
+          />
+        }
 
+      </div>
     </main>
   );
 };

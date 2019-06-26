@@ -1,13 +1,13 @@
 import React, {useCallback} from 'react';
 import {propTypes} from '../cities-list/cities-list.props';
+import {CITIES} from '../../constants/constants';
 
 const CitiesList = (props) => {
   const {
     setCity,
-    cities,
     currentCity,
   } = props;
-
+  const cities = props.cities.length ? props.cities : CITIES;
   return (
     <section className="locations container">
       <ul className="locations__list tabs__list">

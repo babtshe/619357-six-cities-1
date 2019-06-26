@@ -1,28 +1,6 @@
 import React, {PureComponent} from 'react';
 import {propTypes} from './with-options.props';
-
-const OPTIONS = [
-  {
-    name: `Popular`,
-    type: `popular`,
-    descending: true,
-  },
-  {
-    name: `Price: low to high`,
-    type: `price`,
-    descending: false,
-  },
-  {
-    name: `Price: high to low`,
-    type: `price`,
-    descending: true,
-  },
-  {
-    name: `Top rated first`,
-    type: `rating`,
-    descending: true,
-  }
-];
+import {OPTIONS} from '../../constants/constants';
 
 const withOptions = (Component) => {
   class WithOptions extends PureComponent {
