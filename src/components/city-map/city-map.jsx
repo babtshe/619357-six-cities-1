@@ -25,7 +25,7 @@ class CityMap extends PureComponent {
     if (this.markerLayerGroup) {
       this.markerLayerGroup.clearLayers();
     }
-    this.map.setView(cityLocation, zoom);
+    this.map.setView(activeLocation || cityLocation, zoom);
     const markers = offersLocations.map((location) => {
       const icon = (location === activeLocation) ? this.activeIcon : this.icon;
       return leaflet.marker(location, {icon});
@@ -61,6 +61,7 @@ class CityMap extends PureComponent {
       height: `100%`,
     }} ref={this.containerRef}></div>;
   }
+
 }
 
 CityMap.propTypes = propTypes;

@@ -5,6 +5,7 @@ import {
   SET_AUTH_STATUS,
   SET_AUTH_REQUIRED_STATUS,
   SET_REVIEWS_DATA,
+  SET_ACTIVE_LOCATION,
 } from './types';
 
 export const setCity = (city) => ({
@@ -34,5 +35,10 @@ export const setAuthRequiredStatus = (status) => ({
 
 export const setReviewsData = (data) => ({
   type: SET_REVIEWS_DATA,
+  payload: data,
+});
+
+export const setActiveLocation = (data) => ({
+  type: SET_ACTIVE_LOCATION,
   payload: data,
 });

@@ -7,7 +7,7 @@ const Sorting = (props) => {
     options,
     onToggle,
     onClick,
-    activeName,
+    activeOptionName,
   } = props;
   const handleListToggle = useCallback(()=>{
     onToggle();
@@ -16,7 +16,7 @@ const Sorting = (props) => {
     <form className="places__sorting" action="#" method="get">
       <span className="places__sorting-caption">Sort by </span>
       <span className="places__sorting-type" tabIndex="0" onClick={handleListToggle}>
-        {activeName}
+        {activeOptionName}
         <svg className="places__sorting-arrow" width="7" height="4">
           <use xlinkHref="#icon-arrow-select"></use>
         </svg>
@@ -29,7 +29,7 @@ const Sorting = (props) => {
           return (
             <li
               key={option.name}
-              className={`places__option${(option.name === activeName) ? ` places__option--active` : ``}`}
+              className={`places__option${(option.name === activeOptionName) ? ` places__option--active` : ``}`}
               tabIndex="0"
               onClick={handleOptionClick}>
               {option.name}

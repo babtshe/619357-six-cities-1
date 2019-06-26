@@ -77,3 +77,7 @@ export const getNearestOffers = (state, props) => {
   ))
   .slice(1, 4);
 };
+
+export const getActiveLocation = (state) => {
+  return state[NameSpace.OFFERS].activeLocation;
+};

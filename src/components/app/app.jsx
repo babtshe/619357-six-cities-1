@@ -7,6 +7,7 @@ import Favorites from '../favorites/favorites';
 import withPrivateRoute from '../../hocs/with-private-route/with-private-route';
 import SignIn from '../sign-in/sign-in';
 import withAuthorization from '../../hocs/with-authorizaion/with-authorization';
+import withActiveItem from '../../hocs/with-active-item/with-active-item';
 import OfferDetails from '../offer-details/offer-details';
 import {Switch, Route} from 'react-router-dom';
 import {loginUser} from '../../redux/operations';
@@ -15,6 +16,7 @@ import {getCities, getCurrentCity, getCurrentCityOffers, getAuthRequiredStatus, 
 
 const SignInWrapped = withAuthorization(SignIn);
 const FavoritesWrapped = withPrivateRoute(Favorites);
+const MainViewWrapped = withActiveItem(MainView);
 
 const App = (props) => {
   const {
@@ -36,7 +38,7 @@ const App = (props) => {
         userEmail = {userData.email}
       />
       <Switch>
-        <Route exact path="/" render={() => <MainView {...props}/>}/>
+        <Route exact path="/" render={(routeProps) => <MainViewWrapped {...routeProps} {...props}/>}/>
         <Route exact path="/login" render={(routeProps) => <SignInWrapped isAuthorized={isAuthorized} from={routeProps.location.state} login={login}/>}/>
         <Route exact path="/favorites" render={(routeProps) => <FavoritesWrapped location={routeProps.location}/>}/>
         <Route exact path="/offer/:id" render={(routeProps) => <OfferDetails offerId={routeProps.match.params.id}/>}/>

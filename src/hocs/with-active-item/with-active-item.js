@@ -1,7 +1,8 @@
 import React, {PureComponent} from 'react';
+import {propTypes} from './with-active-item.props';
 
 const withActiveItem = (Component) => {
-  return class WithActiveItem extends PureComponent {
+  class WithActiveItem extends PureComponent {
     constructor(props) {
       super(props);
       this.state = {
@@ -10,7 +11,7 @@ const withActiveItem = (Component) => {
       };
       this.setActiveItem = this.setActiveItem.bind(this);
       this.unsetActiveItem = this.unsetActiveItem.bind(this);
-      this.setClickedItem = this.setClickedItem.bind(this);
+      this.setClickedItem = this.props.setClickedItem || this.setClickedItem.bind(this);
     }
 
     setActiveItem(item) {
@@ -37,9 +38,13 @@ const withActiveItem = (Component) => {
         setActiveItem = {this.setActiveItem}
         unsetActiveItem = {this.unsetActiveItem}
         setClickedItem = {this.setClickedItem}
+        clickedItem = {this.state.clickedItem}
       />;
     }
-  };
+  }
+
+  WithActiveItem.propTypes = propTypes;
+  return WithActiveItem;
 };
 
 export default withActiveItem;

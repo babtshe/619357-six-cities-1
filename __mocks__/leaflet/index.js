@@ -9,4 +9,8 @@ export default {
   marker: jest.fn().mockReturnValue({
     addTo: jest.fn(),
   }),
+  layerGroup: jest.fn().mockReturnValue({
+    clearLayers: jest.fn(),
+    addTo: jest.fn(),
+  }),
 };
