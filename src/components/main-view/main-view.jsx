@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import OffersList from '../offers-list/offers-list';
 import CityMap from '../city-map/city-map';
 import CitiesList from '../cities-list/cities-list';
@@ -22,6 +22,7 @@ const MainView = (props) => {
 
   const OffersListWrapped = withRouter(withSorting(withActiveItem(OffersList)));
   const SortingWrapped = withRouter(withQuery(withOptions(Sorting)));
+  const locations = useMemo(() =>offers.map((card) => card.location), [offers]);
 
   return (
     <main className="page__main page__main--index">
@@ -49,7 +50,7 @@ const MainView = (props) => {
           <div className="cities__right-section">
             <section className="cities__map map">
               <CityMap
-                locations = {offers.map((card) => card.location)}
+                locations = {locations}
                 cityLocation = {currentCity.location}
                 zoom = {currentCity.zoom}
                 activeLocation = {clickedItem ? clickedItem.location : null}
