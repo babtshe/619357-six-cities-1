@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
 import {propTypes} from './with-review-submit.props';
+import {Redirect} from 'react-router-dom';
 
 const withReviewSubmit = (Component) => {
   class WithReviewSubmit extends PureComponent {
@@ -12,12 +13,19 @@ const withReviewSubmit = (Component) => {
         rating: ``,
         comment: ``,
         formDisabled: false,
+        submit: false,
       };
     }
 
     render() {
       const formValid = this.validateInput(`rating`, this.state.rating) &&
       this.validateInput(`comment`, this.state.comment);
+      if (!this.props.isAuthorized && this.state.submit) {
+        return <Redirect to={{
+          pathname: `/login`}}/>;
+      } else if (!this.props.isAuthorized) {
+        return null;
+      }
       return (
         <Component
           {...this.props}
@@ -46,6 +54,7 @@ const withReviewSubmit = (Component) => {
         formDisabled: false,
         rating: ``,
         comment: ``,
+        submit: true,
       });
     }
 

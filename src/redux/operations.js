@@ -1,4 +1,4 @@
-import {setOffers, setUserData, setAuthStatus, setReviewsData, setAuthRequiredStatus} from './actions';
+import {setOffers, setUserData, setAuthStatus, setReviewsData} from './actions';
 import {offersAdapter, reviewsAdapter} from './adapter';
 const Request = {
   OFFERS: `/hotels`,
@@ -55,8 +55,7 @@ const sendReview = (offerId, review) => (dispatch, _, api) => {
     if (response.status === Status.OK && response.data) {
       return dispatch(setReviewsData(reviewsAdapter(response.data), offerId));
     } else if (response.status === Status.FORBIDDEN) {
-      dispatch(setAuthStatus(false));
-      return dispatch(setAuthRequiredStatus(true));
+      return dispatch(setAuthStatus(false));
     }
     return null;
   });

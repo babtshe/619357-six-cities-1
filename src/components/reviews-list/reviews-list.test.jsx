@@ -18,6 +18,9 @@ it(`Review should render correctly`, ()=>{
   .create(
       <ReviewsList
         reviews={[mockReview]}
+        id={1}
+        postReview={()=>{}}
+        isAuthorized={true}
       />)
   .toJSON();
 

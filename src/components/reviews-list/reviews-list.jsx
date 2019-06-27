@@ -22,10 +22,11 @@ const ReviewsList = (props) => {
       <ul className="reviews__list">
         {reviews.map((review) => <Review key={review.id} {...review}/>)}
       </ul>
-      {isAuthorized ? <ReviewFormWrapped
+      <ReviewFormWrapped
         id={id}
         sendReview={postReview}
-      /> : ``}
+        isAuthorized={isAuthorized}
+      />
     </section>
   );
 };

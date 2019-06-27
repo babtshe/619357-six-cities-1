@@ -12,6 +12,7 @@ it(`setting value on change works correctly`, () => {
   const wrappedComponent = shallow(<WithActiveItem
     id={1}
     sendReview={()=>{}}
+    isAuthorized={true}
   />);
   wrappedComponent.props().onChange(`name`, `value`);
   expect(wrappedComponent.state()[`name`]).toEqual(`value`);
@@ -25,8 +26,9 @@ it(`sending data on submit works correctly`, () => {
     comment: `testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest`,
   };
   const wrappedComponent = shallow(<WithActiveItem
-    sendReview = {submitHandler}
+    sendReview={submitHandler}
     id={1}
+    isAuthorized={true}
   />);
   wrappedComponent.setState(mockState);
 
