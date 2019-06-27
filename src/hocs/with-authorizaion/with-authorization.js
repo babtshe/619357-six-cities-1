@@ -23,16 +23,11 @@ const withAuthorization = (Component) => {
 
     onSubmit() {
       const {email, password} = this.state;
-      this.props.login(email, password)
-      .then(()=>{
-        this.setState({
-          redirectToReferrer: true,
-        });
-      });
+      this.props.login(email, password);
     }
 
     render() {
-      if (this.state.redirectToReferrer || this.props.isAuthorized) {
+      if (this.props.isAuthorized) {
         return <Redirect to={this.state.from}/>;
       }
       return (

@@ -29,7 +29,7 @@ const Review = (props) => {
         <p className="reviews__text">
           {comment}
         </p>
-        <time className="reviews__time" dateTime={date}>{dateString}</time>
+        <time className="reviews__time" dateTime={date.split(`T`)[0]}>{dateString}</time>
       </div>
     </li>
   );

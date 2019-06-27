@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import ReviewsList from './reviews-list';
+import {ReviewsList} from './reviews-list';
 
 it(`Review should render correctly`, ()=>{
   const mockReview = {

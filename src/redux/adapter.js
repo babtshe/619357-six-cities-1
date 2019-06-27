@@ -1,4 +1,4 @@
-const getRatingPercent = (value) => Math.max(Math.floor(value + 0.5), 5) * 20;
+const getRatingPercent = (value) => Math.max(0, Math.min(Math.floor(value + 0.5), 5)) * 20;
 const adaptDateString = (dateString) => {
   const date = new Date(dateString);
   const month = date.toLocaleString(`en-us`, {month: `long`});
@@ -47,7 +47,7 @@ export const reviewsAdapter = (data = []) => {
   for (const item of data) {
     result.push({
       comment: item.comment,
-      date: item.date.split(`T`)[0],
+      date: item.date,
       dateString: adaptDateString(item.date),
       id: item.id,
       rating: getRatingPercent(item.rating),

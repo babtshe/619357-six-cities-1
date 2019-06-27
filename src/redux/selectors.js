@@ -51,8 +51,8 @@ export const getOfferById = (state, props) => {
 
 export const getReviews = (state) => {
   const getTimestamp = (date) => (new Date(date)).valueOf();
-  return state[NameSpace.OFFERS].reviews
-  .sort((a, b) => getTimestamp(a.date) > getTimestamp(b.date))
+  return [...state[NameSpace.OFFERS].reviews]
+  .sort((a, b) => getTimestamp(b.date) - getTimestamp(a.date))
   .slice(0, MAX_REVIEWS);
 };
 

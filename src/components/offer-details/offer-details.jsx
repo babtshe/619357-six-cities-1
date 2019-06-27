@@ -6,6 +6,7 @@ import {fetchReviews} from '../../redux/operations';
 import ReviewsList from '../reviews-list/reviews-list';
 import OffersList from '../offers-list/offers-list';
 import withActiveItem from '../../hocs/with-active-item/with-active-item';
+
 import CityMap from '../city-map/city-map';
 
 const OffersListWrapped = withActiveItem(OffersList);
@@ -38,6 +39,7 @@ class OfferDetails extends PureComponent {
       goods,
       host,
       description,
+      id,
     } = offer;
     return (
       <main ref={this.topElement} className="page__main page__main--property">
@@ -129,6 +131,7 @@ class OfferDetails extends PureComponent {
               </div>
               <ReviewsList
                 reviews={reviews}
+                id={id}
               />
             </div>
           </div>

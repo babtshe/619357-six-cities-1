@@ -1,21 +1,26 @@
-import {setOffers, setUserData, setAuthStatus, setReviewsData} from './actions';
+import {setOffers, setUserData, setAuthStatus, setReviewsData, setAuthRequiredStatus} from './actions';
 import {offersAdapter, reviewsAdapter} from './adapter';
-const OFFERS_REQUEST = `/hotels`;
-const LOGIN_REQUEST = `/login`;
-const REVIEWS_REQUEST = `/comments`;
-const STATUS_OK = 200;
+const Request = {
+  OFFERS: `/hotels`,
+  LOGIN: `/login`,
+  REVIEWS: `/comments`,
+};
+const Status = {
+  OK: 200,
+  FORBIDDEN: 403,
+};
 
 const fetchOffers = (dispatch, _, api) => {
-  return api.get(OFFERS_REQUEST)
+  return api.get(Request.OFFERS)
   .then((response) => {
     return dispatch(setOffers(offersAdapter(response.data)));
   });
 };
 
 const loginUser = (email, password) => (dispatch, _, api) => {
-  return api.post(LOGIN_REQUEST, {email, password})
+  return api.post(Request.LOGIN, {email, password})
   .then((response) => {
-    if (response.status === STATUS_OK) {
+    if (response.status === Status.OK) {
       dispatch(setAuthStatus(true));
       return dispatch(setUserData(response.data));
     }
@@ -24,9 +29,9 @@ const loginUser = (email, password) => (dispatch, _, api) => {
 };
 
 const fetchUserData = () => (dispatch, _, api) => {
-  return api.get(LOGIN_REQUEST)
+  return api.get(Request.LOGIN)
   .then((response) => {
-    if (response.status === STATUS_OK && response.data) {
+    if (response.status === Status.OK && response.data) {
       dispatch(setAuthStatus(true));
       return dispatch(setUserData(response.data));
     }
@@ -35,13 +40,26 @@ const fetchUserData = () => (dispatch, _, api) => {
 };
 
 const fetchReviews = (offerId) => (dispatch, _, api) => {
-  return api.get(`${REVIEWS_REQUEST}/${offerId}`)
+  return api.get(`${Request.REVIEWS}/${offerId}`)
   .then((response) => {
-    if (response.status === STATUS_OK && response.data) {
+    if (response.status === Status.OK && response.data) {
       return dispatch(setReviewsData(reviewsAdapter(response.data), offerId));
     }
     return null;
   });
 };
 
-export {fetchOffers, loginUser, fetchUserData, fetchReviews};
+const sendReview = (offerId, review) => (dispatch, _, api) => {
+  return api.post(`${Request.REVIEWS}/${offerId}`, review)
+  .then((response) => {
+    if (response.status === Status.OK && response.data) {
+      return dispatch(setReviewsData(reviewsAdapter(response.data), offerId));
+    } else if (response.status === Status.FORBIDDEN) {
+      dispatch(setAuthStatus(false));
+      return dispatch(setAuthRequiredStatus(true));
+    }
+    return null;
+  });
+};
+
+export {fetchOffers, loginUser, fetchUserData, fetchReviews, sendReview};

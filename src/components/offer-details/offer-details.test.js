@@ -1,7 +1,6 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import ShallowRenderer from 'react-test-renderer/shallow';
 import {OfferDetails} from './offer-details';
-import {MemoryRouter} from 'react-router-dom';
 
 it(`OfferDetails should render correctly`, ()=>{
   const mockOffer = {
@@ -26,16 +25,15 @@ it(`OfferDetails should render correctly`, ()=>{
     maxGuests: 1,
     bedrooms: 1,
   };
-  const tree = renderer
-  .create(<MemoryRouter>
-    <OfferDetails
-      offer={mockOffer}
-      nearestOffers={[mockOffer]}
-      reviews={[]}
-      fetchReviews={()=>{}}
-    />
-  </MemoryRouter>)
-  .toJSON();
+  const renderer = new ShallowRenderer();
+  const tree = renderer.render(
+      <OfferDetails
+        offer={mockOffer}
+        nearestOffers={[mockOffer]}
+        reviews={[]}
+        fetchReviews={()=>{}}
+      />
+  );
 
   expect(tree).toMatchSnapshot();
 });
