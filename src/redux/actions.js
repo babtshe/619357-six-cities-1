@@ -7,6 +7,7 @@ import {
   SET_REVIEWS_DATA,
   SET_ACTIVE_LOCATION,
   UPDATE_OFFER,
+  SET_BOOKMARKS,
 } from './types';
 
 export const setCity = (city) => ({
@@ -47,4 +48,9 @@ export const setActiveLocation = (data) => ({
 export const updateOffer = (data, id) => ({
   type: UPDATE_OFFER,
   payload: {data, id}
+});
+
+export const setBookmarks = (placesOffers) => ({
+  type: SET_BOOKMARKS,
+  payload: placesOffers,
 });

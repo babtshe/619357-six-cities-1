@@ -14,7 +14,7 @@ it(`setting value on change works correctly`, () => {
     sendReview={()=>{}}
     isAuthorized={true}
   />);
-  wrappedComponent.props().onChange(`name`, `value`);
+  wrappedComponent.props().children[1].props.onChange(`name`, `value`);
   expect(wrappedComponent.state()[`name`]).toEqual(`value`);
 });
 
@@ -32,7 +32,7 @@ it(`sending data on submit works correctly`, () => {
   />);
   wrappedComponent.setState(mockState);
 
-  wrappedComponent.props().onSubmit();
+  wrappedComponent.props().children[1].props.onSubmit();
   expect(submitHandler).toHaveBeenCalledTimes(1);
   expect(submitHandler).toHaveBeenCalledWith(1, mockState);
 });

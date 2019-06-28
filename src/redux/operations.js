@@ -1,5 +1,5 @@
-import {setOffers, setUserData, setAuthStatus, setReviewsData, updateOffer} from './actions';
-import {offersAdapter, reviewsAdapter} from './adapter';
+import {setOffers, setUserData, setAuthStatus, setReviewsData, updateOffer, setBookmarks} from './actions';
+import {offersAdapter, reviewsAdapter, userDataAdapter} from './adapter';
 const Request = {
   OFFERS: `/hotels`,
   LOGIN: `/login`,
@@ -34,7 +34,7 @@ const fetchUserData = () => (dispatch, _, api) => {
   .then((response) => {
     if (response.status === Status.OK && response.data) {
       dispatch(setAuthStatus(true));
-      return dispatch(setUserData(response.data));
+      return dispatch(setUserData(userDataAdapter(response.data)));
     }
     return null;
   });
@@ -58,7 +58,7 @@ const sendReview = (offerId, review) => (dispatch, _, api) => {
     } else if (response.status === Status.FORBIDDEN) {
       return dispatch(setAuthStatus(false));
     }
-    return null;
+    throw new Error(`Network error. Please try again later.`);
   });
 };
 
@@ -72,4 +72,11 @@ const sendBookmarkedStatus = (offerId, status) => (dispatch, _, api) => {
   });
 };
 
-export {fetchOffers, loginUser, fetchUserData, fetchReviews, sendReview, sendBookmarkedStatus};
+const fetchBookmarks = () => (dispatch, _, api) => {
+  return api.get(Request.BOOKMARK)
+  .then((response) => {
+    return dispatch(setBookmarks(offersAdapter(response.data)));
+  });
+};
+
+export {fetchOffers, loginUser, fetchUserData, fetchReviews, sendReview, sendBookmarkedStatus, fetchBookmarks};

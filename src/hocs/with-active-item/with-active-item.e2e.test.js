@@ -7,22 +7,6 @@ Enzyme.configure({adapter: new Adapter()});
 
 const mockComponent = () => <div/>;
 
-it(`setting active item works correctly`, () => {
-  const WithActiveItem = withActiveItem(mockComponent);
-  const wrappedComponent = shallow(<WithActiveItem/>);
-
-  wrappedComponent.props().setActiveItem(`test`);
-  expect(wrappedComponent.state().activeItem).toEqual(`test`);
-});
-
-it(`unsetting active item works correctly`, () => {
-  const WithActiveItem = withActiveItem(mockComponent);
-  const wrappedComponent = shallow(<WithActiveItem/>);
-
-  wrappedComponent.props().unsetActiveItem();
-  expect(wrappedComponent.state().activeItem).toEqual(null);
-});
-
 it(`setting clicked item works correctly`, () => {
   const WithActiveItem = withActiveItem(mockComponent);
   const wrappedComponent = shallow(<WithActiveItem/>);

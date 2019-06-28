@@ -81,3 +81,7 @@ export const getNearestOffers = (state, props) => {
 export const getActiveLocation = (state) => {
   return state[NameSpace.OFFERS].activeLocation;
 };
+
+export const getBookmarks = (state) => {
+  return state[NameSpace.USER].bookmarks;
+};

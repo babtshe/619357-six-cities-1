@@ -61,3 +61,12 @@ export const reviewsAdapter = (data = []) => {
   }
   return result;
 };
+
+export const userDataAdapter = (data = {}) => {
+  return {
+    avatarUrl: data[`avatar_url`],
+    email: data.email,
+    id: data.id,
+    isPro: data[`is_pro`],
+  };
+};

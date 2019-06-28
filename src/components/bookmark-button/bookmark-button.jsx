@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import propTypes from './bookmark-button.props';
+import {propTypes} from './bookmark-button.props';
 
 const BookmarkButton = (props) => {
   const {

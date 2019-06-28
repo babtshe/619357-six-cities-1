@@ -10,20 +10,17 @@ const OfferCard = (props) => {
   const {
     card,
     onClick,
-    onMouseEnter,
-    onMouseLeave,
     classPrefix,
   } = props;
-  const handleMouseEnter = useCallback(() => {
-    onMouseEnter(card);
-  }, [card]);
   const handleMouseClick = useCallback((evt) => {
     evt.preventDefault();
-    onClick(card);
+    if (typeof onClick === `function`) {
+      onClick(card);
+    }
   }, [card]);
 
   return (
-    <article className={`${classPrefix}__place-card place-card`} onMouseEnter={handleMouseEnter} onMouseLeave={onMouseLeave}>
+    <article className={`${classPrefix}__place-card place-card`}>
       {!!card.premium && (
         <div className="place-card__mark">
           <span>Premium</span>
@@ -35,7 +32,7 @@ const OfferCard = (props) => {
             alt="Place image" />
         </a>
       </div>
-      <div className="place-card__info">
+      <div className={`${classPrefix}__card-info place-card__info`}>
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{card.price}</b>

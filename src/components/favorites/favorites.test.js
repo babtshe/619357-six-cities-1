@@ -1,12 +1,13 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-import Favorites from './favorites';
+import ShallowRenderer from 'react-test-renderer/shallow';
+import {Favorites} from './favorites';
 
 it(`Favorites should render correctly`, ()=>{
+  const renderer = new ShallowRenderer();
   const tree = renderer
-  .create(
-      <Favorites/>)
-  .toJSON();
+  .render(
+      <Favorites/>
+  );
 
   expect(tree).toMatchSnapshot();
 });

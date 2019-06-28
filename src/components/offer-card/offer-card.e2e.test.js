@@ -32,21 +32,3 @@ it(`OfferCard link click is working`, ()=>{
   expect(clickHandler).toHaveBeenCalledTimes(1);
   expect(clickHandler).toHaveBeenCalledWith(mockCard);
 });
-
-it(`OfferCard mouseEnter is working`, ()=>{
-  const mouseEnterHandler = jest.fn();
-  const mainView = shallow(
-      <OfferCard
-        card = {mockCard}
-        onClick = {()=>{}}
-        onMouseEnter = {mouseEnterHandler}
-        onMouseLeave = {()=>{}}
-        classPrefix = {`cities`}
-      />
-  );
-
-  const cardLink = mainView.find(`.cities__place-card`);
-  cardLink.simulate(`mouseenter`);
-  expect(mouseEnterHandler).toHaveBeenCalledTimes(1);
-  expect(mouseEnterHandler).toHaveBeenCalledWith(mockCard);
-});

@@ -3,8 +3,6 @@
 exports[`OfferCard should render correctly 1`] = `
 <article
   className="undefined__place-card place-card"
-  onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
 >
   <div
     className="place-card__mark"
@@ -30,7 +28,7 @@ exports[`OfferCard should render correctly 1`] = `
     </a>
   </div>
   <div
-    className="place-card__info"
+    className="undefined__card-info place-card__info"
   >
     <div
       className="place-card__price-wrapper"

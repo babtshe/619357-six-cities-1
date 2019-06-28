@@ -15,8 +15,6 @@ export const cardTypes = {
 
 export const propTypes = {
   card: PropTypes.shape(cardTypes),
-  onClick: PropTypes.func.isRequired,
-  onMouseEnter: PropTypes.func.isRequired,
-  onMouseLeave: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   classPrefix: PropTypes.string,
 };

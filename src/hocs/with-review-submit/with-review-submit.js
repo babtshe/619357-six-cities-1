@@ -14,6 +14,8 @@ const withReviewSubmit = (Component) => {
         comment: ``,
         formDisabled: false,
         submit: false,
+        hasError: false,
+        error: null,
       };
     }
 
@@ -26,7 +28,8 @@ const withReviewSubmit = (Component) => {
       } else if (!this.props.isAuthorized) {
         return null;
       }
-      return (
+      return (<>
+          {this.state.hasError ? <div className='error-message'>{this.state.error}</div> : ``}
         <Component
           {...this.props}
           onChange={this.onChange}
@@ -35,7 +38,8 @@ const withReviewSubmit = (Component) => {
           comment={this.state.comment}
           submitDisabled={!formValid}
           formDisabled={this.state.formDisabled}
-        />);
+        />
+        </>);
     }
 
     onChange(name, value) {
@@ -49,12 +53,23 @@ const withReviewSubmit = (Component) => {
         formDisabled: true,
       });
       const {rating, comment} = this.state;
-      this.props.sendReview(this.id, {rating, comment});
-      this.setState({
-        formDisabled: false,
-        rating: ``,
-        comment: ``,
-        submit: true,
+      this.props.sendReview(this.id, {rating, comment})
+      .then(()=>{
+        this.setState({
+          formDisabled: false,
+          rating: ``,
+          comment: ``,
+          submit: true,
+          hasError: false,
+          error: null,
+        });
+      })
+      .catch((error) => {
+        this.setState({
+          formDisabled: false,
+          hasError: true,
+          error: error.toString(),
+        });
       });
     }
 

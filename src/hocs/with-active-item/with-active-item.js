@@ -6,24 +6,9 @@ const withActiveItem = (Component) => {
     constructor(props) {
       super(props);
       this.state = {
-        activeItem: null,
         clickedItem: null,
       };
-      this.setActiveItem = this.setActiveItem.bind(this);
-      this.unsetActiveItem = this.unsetActiveItem.bind(this);
       this.setClickedItem = this.props.setClickedItem || this.setClickedItem.bind(this);
-    }
-
-    setActiveItem(item) {
-      this.setState({
-        activeItem: item,
-      });
-    }
-
-    unsetActiveItem() {
-      this.setState({
-        activeItem: null,
-      });
     }
 
     setClickedItem(item) {
@@ -35,8 +20,6 @@ const withActiveItem = (Component) => {
     render() {
       return <Component
         {...this.props}
-        setActiveItem = {this.setActiveItem}
-        unsetActiveItem = {this.unsetActiveItem}
         setClickedItem = {this.setClickedItem}
         clickedItem = {this.state.clickedItem}
       />;
