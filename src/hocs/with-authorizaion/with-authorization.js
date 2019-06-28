@@ -1,6 +1,10 @@
 import React, {PureComponent} from 'react';
 import {propTypes} from './with-authorization.props';
 import {Redirect} from 'react-router-dom';
+import {connect} from 'react-redux';
+import hoistNonReactStatic from 'hoist-non-react-statics';
+import {compose} from 'redux';
+import {loginUser} from '../../redux/operations';
 
 const withAuthorization = (Component) => {
   class WithAuthorization extends PureComponent {
@@ -42,7 +46,15 @@ const withAuthorization = (Component) => {
 
   WithAuthorization.propTypes = propTypes;
 
-  return WithAuthorization;
+  return hoistNonReactStatic(WithAuthorization, Component);
 };
 
-export default withAuthorization;
+const mapDispatchToProps = {
+  login: (data) => loginUser(data),
+};
+
+export {withAuthorization};
+
+export default compose(
+    connect(null, mapDispatchToProps),
+    withAuthorization);

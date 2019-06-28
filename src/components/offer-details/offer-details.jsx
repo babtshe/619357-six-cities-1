@@ -5,10 +5,12 @@ import {getOfferById, getReviews, getNearestOffers} from '../../redux/selectors'
 import {fetchReviews} from '../../redux/operations';
 import ReviewsList from '../reviews-list/reviews-list';
 import OffersList from '../offers-list/offers-list';
+import BookmarkButton from '../bookmark-button/bookmark-button';
 import withActiveItem from '../../hocs/with-active-item/with-active-item';
-
+import withToggleBookmark from '../../hocs/with-toggle-bookmark/with-toggle-bookmark';
 import CityMap from '../city-map/city-map';
 
+const ToggleBookmarkWrapped = withToggleBookmark(BookmarkButton);
 const OffersListWrapped = withActiveItem(OffersList);
 
 class OfferDetails extends PureComponent {
@@ -39,6 +41,7 @@ class OfferDetails extends PureComponent {
       goods,
       host,
       description,
+      bookmarked,
       id,
     } = offer;
     return (
@@ -66,12 +69,10 @@ class OfferDetails extends PureComponent {
                 <h1 className="property__name">
                   {name}
                 </h1>
-                <button className="property__bookmark-button button" type="button">
-                  <svg className="property__bookmark-icon" width="31" height="33">
-                    <use xlinkHref="#icon-bookmark"></use>
-                  </svg>
-                  <span className="visually-hidden">To bookmarks</span>
-                </button>
+                <ToggleBookmarkWrapped
+                  id={id}
+                  bookmarked={bookmarked}
+                />
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">

@@ -45,25 +45,9 @@ exports[`OfferDetails should render correctly 1`] = `
           >
             test1
           </h1>
-          <button
-            className="property__bookmark-button button"
-            type="button"
-          >
-            <svg
-              className="property__bookmark-icon"
-              height="33"
-              width="31"
-            >
-              <use
-                xlinkHref="#icon-bookmark"
-              />
-            </svg>
-            <span
-              className="visually-hidden"
-            >
-              To bookmarks
-            </span>
-          </button>
+          <Memo(ConnectFunction)
+            id={1}
+          />
         </div>
         <div
           className="property__rating rating"

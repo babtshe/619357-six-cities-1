@@ -1,9 +1,19 @@
 import React, {useCallback} from 'react';
 import {propTypes} from './offer-card.props';
 import {Link} from 'react-router-dom';
+import BookmarkButton from '../bookmark-button/bookmark-button';
+import withToggleBookmark from '../../hocs/with-toggle-bookmark/with-toggle-bookmark';
+
+const ToggleBookmarkWrapped = withToggleBookmark(BookmarkButton);
 
 const OfferCard = (props) => {
-  const {card, onClick, onMouseEnter, onMouseLeave, classPrefix} = props;
+  const {
+    card,
+    onClick,
+    onMouseEnter,
+    onMouseLeave,
+    classPrefix,
+  } = props;
   const handleMouseEnter = useCallback(() => {
     onMouseEnter(card);
   }, [card]);
@@ -31,12 +41,11 @@ const OfferCard = (props) => {
             <b className="place-card__price-value">&euro;{card.price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <button className={`place-card__bookmark-button button ${card.bookmarked ? `place-card__bookmark-button--active` : ``}`} type="button">
-            <svg className="place-card__bookmark-icon" width="18" height="19">
-              <use xlinkHref="#icon-bookmark"></use>
-            </svg>
-            <span className="visually-hidden">To bookmarks</span>
-          </button>
+          <ToggleBookmarkWrapped
+            id={card.id}
+            bookmarked={card.bookmarked}
+            isSmall={true}
+          />
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">

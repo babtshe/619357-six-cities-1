@@ -1,9 +1,10 @@
-import {setOffers, setUserData, setAuthStatus, setReviewsData} from './actions';
+import {setOffers, setUserData, setAuthStatus, setReviewsData, updateOffer} from './actions';
 import {offersAdapter, reviewsAdapter} from './adapter';
 const Request = {
   OFFERS: `/hotels`,
   LOGIN: `/login`,
   REVIEWS: `/comments`,
+  BOOKMARK: `/favorite`,
 };
 const Status = {
   OK: 200,
@@ -43,7 +44,7 @@ const fetchReviews = (offerId) => (dispatch, _, api) => {
   return api.get(`${Request.REVIEWS}/${offerId}`)
   .then((response) => {
     if (response.status === Status.OK && response.data) {
-      return dispatch(setReviewsData(reviewsAdapter(response.data), offerId));
+      return dispatch(setReviewsData(reviewsAdapter(response.data)));
     }
     return null;
   });
@@ -61,4 +62,14 @@ const sendReview = (offerId, review) => (dispatch, _, api) => {
   });
 };
 
-export {fetchOffers, loginUser, fetchUserData, fetchReviews, sendReview};
+const sendBookmarkedStatus = (offerId, status) => (dispatch, _, api) => {
+  return api.post(`${Request.BOOKMARK}/${offerId}/${status}`)
+  .then((response) => {
+    if (response.status === Status.OK && response.data) {
+      return dispatch(updateOffer(offersAdapter([response.data]), offerId));
+    }
+    return null;
+  });
+};
+
+export {fetchOffers, loginUser, fetchUserData, fetchReviews, sendReview, sendBookmarkedStatus};

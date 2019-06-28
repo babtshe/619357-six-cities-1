@@ -12,27 +12,29 @@ exports[`MainView should render correctly 1`] = `
   <div
     className="cities tabs"
   >
-    <section
-      className="locations container"
-    >
-      <ul
-        className="locations__list tabs__list"
-      >
-        <li
-          className="locations__item"
-        >
-          <a
-            className="locations__item-link tabs__item tabs__item--active"
-            href="#"
-            onClick={[Function]}
-          >
-            <span>
-              test
-            </span>
-          </a>
-        </li>
-      </ul>
-    </section>
+    <CitiesList
+      cities={
+        Array [
+          Object {
+            "location": Array [
+              0,
+              0,
+            ],
+            "name": "test",
+          },
+        ]
+      }
+      currentCity={
+        Object {
+          "location": Array [
+            0,
+            0,
+          ],
+          "name": "test",
+        }
+      }
+      setCity={[Function]}
+    />
   </div>
   <div
     className="cities__places-wrapper"
@@ -57,274 +59,40 @@ exports[`MainView should render correctly 1`] = `
            to stay in 
           test
         </b>
-        <form
-          action="#"
-          className="places__sorting"
-          method="get"
-        >
-          <span
-            className="places__sorting-caption"
-          >
-            Sort by 
-          </span>
-          <span
-            className="places__sorting-type"
-            onClick={[Function]}
-            tabIndex="0"
-          >
-            Popular
-            <svg
-              className="places__sorting-arrow"
-              height="4"
-              width="7"
-            >
-              <use
-                xlinkHref="#icon-arrow-select"
-              />
-            </svg>
-          </span>
-          <ul
-            className="places__options places__options--custom "
-          >
-            <li
-              className="places__option places__option--active"
-              onClick={[Function]}
-              tabIndex="0"
-            >
-              Popular
-            </li>
-            <li
-              className="places__option"
-              onClick={[Function]}
-              tabIndex="0"
-            >
-              Price: low to high
-            </li>
-            <li
-              className="places__option"
-              onClick={[Function]}
-              tabIndex="0"
-            >
-              Price: high to low
-            </li>
-            <li
-              className="places__option"
-              onClick={[Function]}
-              tabIndex="0"
-            >
-              Top rated first
-            </li>
-          </ul>
-        </form>
-        <div
-          className="cities__places-list places__list tabs__content"
-        >
-          <article
-            className="cities__place-card place-card"
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-          >
-            <div
-              className="place-card__mark"
-            >
-              <span>
-                Premium
-              </span>
-            </div>
-            <div
-              className="cities__image-wrapper place-card__image-wrapper"
-            >
-              <a
-                href="#"
-                onClick={[Function]}
-              >
-                <img
-                  alt="Place image"
-                  className="place-card__image"
-                  height="200"
-                  src="test"
-                  width="260"
-                />
-              </a>
-            </div>
-            <div
-              className="place-card__info"
-            >
-              <div
-                className="place-card__price-wrapper"
-              >
-                <div
-                  className="place-card__price"
-                >
-                  <b
-                    className="place-card__price-value"
-                  >
-                    €
-                    1
-                  </b>
-                  <span
-                    className="place-card__price-text"
-                  >
-                    / night
-                  </span>
-                </div>
-                <button
-                  className="place-card__bookmark-button button "
-                  type="button"
-                >
-                  <svg
-                    className="place-card__bookmark-icon"
-                    height="19"
-                    width="18"
-                  >
-                    <use
-                      xlinkHref="#icon-bookmark"
-                    />
-                  </svg>
-                  <span
-                    className="visually-hidden"
-                  >
-                    To bookmarks
-                  </span>
-                </button>
-              </div>
-              <div
-                className="place-card__rating rating"
-              >
-                <div
-                  className="place-card__stars rating__stars"
-                >
-                  <span
-                    style={
-                      Object {
-                        "width": "1%",
-                      }
-                    }
-                  />
-                  <span
-                    className="visually-hidden"
-                  >
-                    Rating
-                  </span>
-                </div>
-              </div>
-              <h2
-                className="place-card__name"
-              >
-                <a
-                  href="/offer/1"
-                  onClick={[Function]}
-                >
-                  test1
-                </a>
-              </h2>
-              <p
-                className="place-card__type"
-              >
-                apartment
-              </p>
-            </div>
-          </article>
-          <article
-            className="cities__place-card place-card"
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-          >
-            <div
-              className="cities__image-wrapper place-card__image-wrapper"
-            >
-              <a
-                href="#"
-                onClick={[Function]}
-              >
-                <img
-                  alt="Place image"
-                  className="place-card__image"
-                  height="200"
-                  src="test"
-                  width="260"
-                />
-              </a>
-            </div>
-            <div
-              className="place-card__info"
-            >
-              <div
-                className="place-card__price-wrapper"
-              >
-                <div
-                  className="place-card__price"
-                >
-                  <b
-                    className="place-card__price-value"
-                  >
-                    €
-                    1
-                  </b>
-                  <span
-                    className="place-card__price-text"
-                  >
-                    / night
-                  </span>
-                </div>
-                <button
-                  className="place-card__bookmark-button button place-card__bookmark-button--active"
-                  type="button"
-                >
-                  <svg
-                    className="place-card__bookmark-icon"
-                    height="19"
-                    width="18"
-                  >
-                    <use
-                      xlinkHref="#icon-bookmark"
-                    />
-                  </svg>
-                  <span
-                    className="visually-hidden"
-                  >
-                    To bookmarks
-                  </span>
-                </button>
-              </div>
-              <div
-                className="place-card__rating rating"
-              >
-                <div
-                  className="place-card__stars rating__stars"
-                >
-                  <span
-                    style={
-                      Object {
-                        "width": "1%",
-                      }
-                    }
-                  />
-                  <span
-                    className="visually-hidden"
-                  >
-                    Rating
-                  </span>
-                </div>
-              </div>
-              <h2
-                className="place-card__name"
-              >
-                <a
-                  href="/offer/2"
-                  onClick={[Function]}
-                >
-                  test2
-                </a>
-              </h2>
-              <p
-                className="place-card__type"
-              >
-                room
-              </p>
-            </div>
-          </article>
-        </div>
+        <withRouter(WithQuery) />
+        <withRouter(WithSorting)
+          classPrefix="cities"
+          offers={
+            Array [
+              Object {
+                "id": 1,
+                "image": "test",
+                "location": Array [
+                  52.3909553943508,
+                  4.85309666406198,
+                ],
+                "name": "test1",
+                "premium": true,
+                "price": 1,
+                "rating": 1,
+                "type": "apartment",
+              },
+              Object {
+                "bookmarked": true,
+                "id": 2,
+                "image": "test",
+                "location": Array [
+                  52.369553943508,
+                  4.85309666406198,
+                ],
+                "name": "test2",
+                "price": 1,
+                "rating": 1,
+                "type": "room",
+              },
+            ]
+          }
+        />
       </section>
       <div
         className="cities__right-section"
@@ -332,13 +100,25 @@ exports[`MainView should render correctly 1`] = `
         <section
           className="cities__map map"
         >
-          <div
-            id="map"
-            style={
-              Object {
-                "height": "100%",
-                "width": "100%",
-              }
+          <CityMap
+            activeLocation={null}
+            cityLocation={
+              Array [
+                0,
+                0,
+              ]
+            }
+            locations={
+              Array [
+                Array [
+                  52.3909553943508,
+                  4.85309666406198,
+                ],
+                Array [
+                  52.369553943508,
+                  4.85309666406198,
+                ],
+              ]
             }
           />
         </section>

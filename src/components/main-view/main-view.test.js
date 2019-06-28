@@ -1,7 +1,6 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import ShallowRenderer from 'react-test-renderer/shallow';
 import MainView from './main-view';
-import {MemoryRouter} from 'react-router-dom';
 
 jest.mock(`leaflet`);
 
@@ -30,17 +29,15 @@ it(`MainView should render correctly`, ()=>{
     }
   ];
   const mockCity = {name: `test`, location: [0, 0]};
+  const renderer = new ShallowRenderer();
   const tree = renderer
-  .create(
-      <MemoryRouter>
-        <MainView
-          offers = {mockCards}
-          setCity = {()=>{}}
-          cities = {[mockCity]}
-          currentCity = {mockCity}
-        />
-      </MemoryRouter>)
-  .toJSON();
+  .render(
+      <MainView
+        offers = {mockCards}
+        setCity = {()=>{}}
+        cities = {[mockCity]}
+        currentCity = {mockCity}
+      />);
 
   expect(tree).toMatchSnapshot();
 });

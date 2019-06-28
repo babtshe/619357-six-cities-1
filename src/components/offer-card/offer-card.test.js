@@ -1,6 +1,5 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-import {MemoryRouter} from 'react-router-dom';
+import ShallowRenderer from 'react-test-renderer/shallow';
 import {OfferCard} from './offer-card';
 
 it(`OfferCard should render correctly`, ()=>{
@@ -14,17 +13,15 @@ it(`OfferCard should render correctly`, ()=>{
     id: 1,
     location: [52.3909553943508, 4.85309666406198],
   };
+  const renderer = new ShallowRenderer();
   const tree = renderer
-  .create(
-      <MemoryRouter>
-        <OfferCard
-          card = {mockCard}
-          onClick = {()=>{}}
-          onMouseEnter = {()=>{}}
-          onMouseLeave = {()=>{}}
-        />
-      </MemoryRouter>)
-  .toJSON();
+  .render(
+      <OfferCard
+        card = {mockCard}
+        onClick = {()=>{}}
+        onMouseEnter = {()=>{}}
+        onMouseLeave = {()=>{}}
+      />);
 
   expect(tree).toMatchSnapshot();
 });
