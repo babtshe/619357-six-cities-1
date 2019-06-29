@@ -2,6 +2,14 @@ import React, {PureComponent} from 'react';
 import {propTypes} from './city-map.props';
 import leaflet from 'leaflet';
 
+const Marker = {
+  DEFAULT_URL: `img/icon-marker.svg`,
+  ACTIVE_URL: `img/icon-marker-active.svg`,
+  ICON_SIZE: [27, 39],
+};
+
+const DEFAULT_ZOOM = 12;
+
 class CityMap extends PureComponent {
   constructor(props) {
     super(props);
@@ -11,17 +19,17 @@ class CityMap extends PureComponent {
     this.map = null;
     this.activeLocation = this.props.activeLocation || [];
     this.icon = leaflet.icon({
-      iconUrl: `img/icon-marker.svg`,
-      iconSize: [27, 39],
+      iconUrl: Marker.DEFAULT_URL,
+      iconSize: Marker.ICON_SIZE,
     });
     this.activeIcon = leaflet.icon({
-      iconUrl: `img/icon-marker-active.svg`,
-      iconSize: [27, 39],
+      iconUrl: Marker.ACTIVE_URL,
+      iconSize: Marker.ICON_SIZE,
     });
     this.markerLayerGroup = null;
   }
 
-  renderOffers(cityLocation, offersLocations = [], zoom = 12, activeLocation) {
+  renderOffers(cityLocation, offersLocations = [], zoom = DEFAULT_ZOOM, activeLocation) {
     if (this.markerLayerGroup) {
       this.markerLayerGroup.clearLayers();
     }

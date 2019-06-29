@@ -9,7 +9,6 @@ class Favorites extends PureComponent {
   constructor(props) {
     super(props);
     this.getCitiesList = this.getCitiesList.bind(this);
-    this.cities = [];
   }
 
   render() {
@@ -65,11 +64,6 @@ class Favorites extends PureComponent {
 
   componentDidMount() {
     this.props.fetchBookmarks();
-    this.cities = this.getCitiesList();
-  }
-
-  componentWillMount() {
-    this.cities = this.getCitiesList();
   }
 }
 

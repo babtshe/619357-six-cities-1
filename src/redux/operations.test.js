@@ -2,7 +2,7 @@ import MockAdapter from 'axios-mock-adapter';
 import {fetchOffers} from './operations';
 import {configureAPI} from '../api';
 import {SET_OFFERS} from './types';
-import adapter from './adapter';
+import {offersAdapter} from './adapter';
 
 it(`network request should work correctly`, () => {
   const dispatch = jest.fn();
@@ -22,11 +22,18 @@ it(`network request should work correctly`, () => {
       longitude: 0,
       zoom: 0,
     },
+    images: [],
     [`preview_image`]: `test`,
     title: `test`,
     [`is_favorite`]: false,
     [`is_premium`]: false,
     rating: 0,
+    host: {
+      [`avatar_url`]: `test`,
+      id: 1,
+      name: `test`,
+      [`is_pro`]: false,
+    },
   }];
 
   apiMock.onGet(`/hotels`)
@@ -37,7 +44,7 @@ it(`network request should work correctly`, () => {
     expect(dispatch).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenNthCalledWith(1, {
       type: SET_OFFERS,
-      payload: adapter(mockData),
+      payload: offersAdapter(mockData),
     });
   });
 });

@@ -21,7 +21,7 @@ const ReviewForm = (props) => {
     onSubmit();
   }, [onSubmit, submitDisabled]);
 
-  const options = [
+  const OPTIONS = [
     {id: `5`, title: `perfect`},
     {id: `4`, title: `good`},
     {id: `3`, title: `not bad`},
@@ -33,7 +33,7 @@ const ReviewForm = (props) => {
     <form className="reviews__form form" action="#" onSubmit={handleSubmit} method="post">
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating">
-        {options.map((item) => (
+        {OPTIONS.map((item) => (
           <Fragment key={item.id}>
             <input onChange={handleChange} disabled={formDisabled} checked={item.id === rating} className="form__rating-input visually-hidden" name="rating" value={item.id} id={`${item.id}-stars`} type="radio" required/>
             <label htmlFor={`${item.id}-stars`} className="reviews__rating-label form__rating-label" title={item.title}>

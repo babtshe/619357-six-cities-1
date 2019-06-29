@@ -6,7 +6,9 @@ it(`Favorites should render correctly`, ()=>{
   const renderer = new ShallowRenderer();
   const tree = renderer
   .render(
-      <Favorites/>
+      <Favorites
+        fetchBookmarks={()=>{}}
+      />
   );
 
   expect(tree).toMatchSnapshot();
